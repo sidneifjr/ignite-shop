@@ -8,6 +8,7 @@ import { HomeContainer, Product } from "@/styles/pages/home"
 
 import 'keen-slider/keen-slider.min.css'
 import Stripe from "stripe"
+import Link from "next/link"
 
 interface HomeProps {
   products: {
@@ -30,22 +31,23 @@ export default function Home({ products }: HomeProps) {
     <HomeContainer ref={sliderRef} className="keen-slider">
       {products.map(product => {
         return (
-          <Product key={product.id} className="keen-slider__slide">
-            <Image src={product.imageUrl} alt="" width={520} height={480} />
+          <Link key={product.id} href={`/product/${product.id}`}>
+            <Product className="keen-slider__slide">
+              <Image src={product.imageUrl} alt="" width={520} height={480} />
 
-            <footer>
-              <strong>{product.name}</strong>
-              <span>{product.price}</span>
-            </footer>
-          </Product>
+              <footer>
+                <strong>{product.name}</strong>
+                <span>{product.price}</span>
+              </footer>
+            </Product>
+          </Link>
         )
       })}
-      {/* <pre>{JSON.stringify(products)}</pre> */}
     </HomeContainer>
   )
 }
 
-// Posso usar duas opções: getServerSideProps (habilita SSR) e getStaticProps (habilita SSG).
+// Tenho duas opções: getServerSideProps (habilita SSR) e getStaticProps (habilita SSG).
 // Roda no servidor Node, provisionado pelo Next; útil quando queremos realizar uma chamada de API oculta ao usuário final.
 // Posso inserir código de autenticação, acesso a banco de dados, requisições, dados sensíveis, etc.
 export const getStaticProps: GetStaticProps = async () => {
@@ -61,7 +63,10 @@ export const getStaticProps: GetStaticProps = async () => {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: priceUnit / 100,
+      price: new Intl.NumberFormat('pt-br', {
+        style: 'currency',
+        currency: 'BRL',
+      }).format(priceUnit / 100),
     }
   })
 
