@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // Necessário para que o Next possa realizar o processo de otimização dos assets provenientes de um domínio específico.
+  // Permite que o Next otimize os assets provenientes de um domínio específico (externo).
   images: {
     domains: [
       'files.stripe.com'
