@@ -26,7 +26,7 @@ export default function Product({ product }: ProductProps) {
       setIsCreatingCheckoutSession(true)
 
       const response = await axios.post('/api/checkout', {
-        priceId: product.defaultPriceId
+        priceId: product?.defaultPriceId
       })
 
       const { checkoutUrl } = response.data
@@ -43,14 +43,14 @@ export default function Product({ product }: ProductProps) {
   return (
     <ProductContainer>
       <ImageContainer>
-        <Image src={product.imageUrl} width={520} height={480} alt="" />
+        <Image src={product?.imageUrl} width={520} height={480} alt="" />
       </ImageContainer>
 
       <ProductDetails>
-        <h1>{product.name}</h1>
-        <span>{product.price}</span>
+        <h1>{product?.name}</h1>
+        <span>{product?.price}</span>
 
-        <p>{product.description}</p>
+        <p>{product?.description}</p>
 
         <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>Comprar agora</button>
       </ProductDetails>
@@ -74,20 +74,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     expand: ['default_price'],
   })
 
-  const price = product.default_price as Stripe.Price
+  const price = product?.default_price as Stripe.Price
   const priceUnit = price.unit_amount as number
 
   return {
     props: {
       product: {
-        id: product.id,
-        name: product.name,
-        imageUrl: product.images[0],
+        id: product?.id,
+        name: product?.name,
+        imageUrl: product?.images[0],
         price: new Intl.NumberFormat('pt-br', {
           style: 'currency',
           currency: 'BRL',
         }).format(priceUnit / 100),
-        description: product.description,
+        description: product?.description,
         defaultPriceId: price.id
       }
     },
