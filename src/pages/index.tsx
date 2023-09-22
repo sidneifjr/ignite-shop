@@ -1,15 +1,15 @@
-import Image from "next/image"
-import { stripe } from "@/lib/stripe"
-import { GetStaticProps } from "next"
-import Head from "next/head"
+import Image from 'next/image';
+import { stripe } from '@/lib/stripe';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
 
-import { useKeenSlider } from 'keen-slider/react'
+import { useKeenSlider } from 'keen-slider/react';
 
-import { HomeContainer, Product } from "@/styles/pages/home"
+import { HomeContainer, Product } from '@/styles/pages/home';
 
-import 'keen-slider/keen-slider.min.css'
-import Stripe from "stripe"
-import Link from "next/link"
+import 'keen-slider/keen-slider.min.css';
+import Stripe from 'stripe';
+import Link from 'next/link';
 
 interface HomeProps {
   products: {
@@ -17,16 +17,26 @@ interface HomeProps {
     name: string;
     imageUrl: string;
     price: string;
-  }[]
+  }[];
 }
 
 export default function Home({ products }: HomeProps) {
-  const [ sliderRef ] = useKeenSlider({
+  const [sliderRef] = useKeenSlider({
     slides: {
       spacing: 48,
-      perView: 3,
-    }
-  })
+      perView: 1.8,
+      // configurar para, quando o item ativo nao for o primeiro slider, centralizar os slides.
+      // origin: 'center',
+    },
+  });
+
+  const handleProductData = (selectedProductIndex) => {
+    console.log(products);
+    console.log(selectedProductIndex);
+
+    const selectedProductData = products[selectedProductIndex];
+    console.log(selectedProductData);
+  };
 
   return (
     <>
@@ -34,24 +44,50 @@ export default function Home({ products }: HomeProps) {
         <title>Ignite Shop</title>
       </Head>
 
-      <HomeContainer ref={sliderRef} className="keen-slider">
-        {products.map(product => {
+      <HomeContainer
+        ref={sliderRef}
+        className="keen-slider"
+      >
+        {products.map((product, index) => {
           return (
-            <Link key={product.id} href={`/product/${product.id}`} prefetch={false}>
-              <Product className="keen-slider__slide">
-                <Image src={product.imageUrl} alt="" width={520} height={480} />
+            <Product
+              key={product.id}
+              className="keen-slider__slide"
+            >
+              <Link
+                key={product.id}
+                href={`/product/${product.id}`}
+                prefetch={false}
+              >
+                <Image
+                  src={product.imageUrl}
+                  alt=""
+                  width={520}
+                  height={480}
+                />
+              </Link>
 
-                <footer>
+              <footer>
+                <section>
                   <strong>{product.name}</strong>
                   <span>{product.price}</span>
-                </footer>
-              </Product>
-            </Link>
-          )
+                </section>
+
+                <button onClick={() => handleProductData(index)}>
+                  <Image
+                    width={32}
+                    height={32}
+                    src="./bag.svg"
+                    alt=""
+                  />
+                </button>
+              </footer>
+            </Product>
+          );
         })}
       </HomeContainer>
     </>
-  )
+  );
 }
 
 // Tenho duas opções: getServerSideProps (habilita SSR) e getStaticProps (habilita SSG).
@@ -59,12 +95,12 @@ export default function Home({ products }: HomeProps) {
 // Posso inserir código de autenticação, acesso a banco de dados, requisições, dados sensíveis, etc.
 export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
-    expand: ['data.default_price']
-  })
+    expand: ['data.default_price'],
+  });
 
-  const products = response.data.map(product => {
-    const price = product.default_price as Stripe.Price
-    const priceUnit = price.unit_amount as number
+  const products = response.data.map((product) => {
+    const price = product.default_price as Stripe.Price;
+    const priceUnit = price.unit_amount as number;
 
     return {
       id: product.id,
@@ -74,14 +110,14 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL',
       }).format(priceUnit / 100),
-    }
-  })
+    };
+  });
 
   return {
     props: {
-      products
+      products,
     },
 
-    revalidate: 60 * 60 * 2 // 2 hours
-  }
-}
+    revalidate: 60 * 60 * 2, // 2 hours
+  };
+};

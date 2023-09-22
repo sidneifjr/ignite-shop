@@ -1,7 +1,3 @@
-## Informações importantes
-
-https://app.rocketseat.com.br/h/forum/react-js/8c0249bb-2dc2-4f2f-bc6e-aaf1e647525a#0dba58b7-9dcb-4127-b5d5-6e1f6ae29ae3
-
 ## Próximos passos
 
 Nesse desafio, você vai aproveitar a aplicação que já desenvolvemos na trilha para implementar um carrinho que utilizará os dados da API do Stripe para buscar os itens existentes, e controlará, através da sua aplicação, o número de itens que a pessoa deseja comprar.
@@ -11,6 +7,12 @@ Nesse desafio, você vai aproveitar a aplicação que já desenvolvemos na trilh
 - Enviar o carrinho que você armazenou na aplicação para a rota de checkout, onde irá gerar a sessão de checkout com os `line_items` necessários.
 
 Para completar esse desafio você vai precisar de realizar algumas pesquisas para entender sobre a API do Stripe.
+
+Layout: https://www.figma.com/file/qmsUES7HA9SN7If869pmUb/Ignite-Shop-2.0-%E2%80%A2-Desafio-React-(Copy)?node-id=408%3A147&mode=dev
+
+## Informações importantes
+
+https://app.rocketseat.com.br/h/forum/react-js/8c0249bb-2dc2-4f2f-bc6e-aaf1e647525a#0dba58b7-9dcb-4127-b5d5-6e1f6ae29ae3
 
 ## Docs
 

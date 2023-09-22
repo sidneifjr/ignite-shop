@@ -1,22 +1,22 @@
-import { styled } from "..";
+import { styled } from '..';
 
 export const HomeContainer = styled('main', {
-  display: "flex",
+  display: 'flex',
   width: '100%',
-  maxWidth: 'calc(100vw - ((100vw - 1180px) / 2))',
+  maxWidth: 'calc(100vw - ((100vw - 1440px) / 2))',
   marginLeft: 'auto',
   minHeight: 656,
-})
+});
 
 export const Product = styled('div', {
   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
   borderRadius: 8,
-  cursor: "pointer",
-  position: "relative",
+  cursor: 'pointer',
+  position: 'relative',
 
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 
   img: {
     objectFit: 'cover',
@@ -27,13 +27,13 @@ export const Product = styled('div', {
     bottom: '0.25rem',
     left: '0.25rem',
     right: '0.25rem',
-    padding: '2rem',
-    overflow: "hidden",
+    padding: '1.4rem 2rem',
+    overflow: 'hidden',
 
     borderRadius: 6,
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
 
     background: 'rgba(0,0,0,0.6)',
 
@@ -41,8 +41,16 @@ export const Product = styled('div', {
     opacity: 0,
     transition: 'all 0.2s ease-in-out',
 
+    section: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.25rem',
+    },
+
     strong: {
       fontSize: '$lg',
+      lineHeight: '160%',
+      fontWeight: 700,
       color: '$gray100',
     },
 
@@ -50,13 +58,23 @@ export const Product = styled('div', {
       fontSize: '$xl',
       fontWeight: 'bold',
       color: '$green300',
-    }
+    },
+
+    button: {
+      width: '3.5rem',
+      height: '3.5rem',
+      border: 'none',
+      borderRadius: '0.375rem',
+      padding: '0.75rem',
+      background: '$green500',
+      cursor: 'pointer',
+    },
   },
 
   '&:hover': {
     footer: {
       transform: 'translateY(0%)',
-      opacity: 1
-    }
-  }
-})
+      opacity: 1,
+    },
+  },
+});
