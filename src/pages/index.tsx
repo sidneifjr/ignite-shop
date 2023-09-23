@@ -1,26 +1,26 @@
-import Image from 'next/image';
-import { stripe } from '@/lib/stripe';
-import { GetStaticProps } from 'next';
+import { useContext } from 'react';
+
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import { GetStaticProps } from 'next';
+
+import { CartContext } from '@/context/CartContext';
+
+import Stripe from 'stripe';
+import { stripe } from '@/lib/stripe';
 
 import { useKeenSlider } from 'keen-slider/react';
+
+import { HomeProps } from '@/interfaces/interfaces';
 
 import { HomeContainer, Product } from '@/styles/pages/home';
 
 import 'keen-slider/keen-slider.min.css';
-import Stripe from 'stripe';
-import Link from 'next/link';
-
-interface HomeProps {
-  products: {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: string;
-  }[];
-}
 
 export default function Home({ products }: HomeProps) {
+  const { selectedProduct, setSelectedProduct } = useContext<any>(CartContext);
+
   const [sliderRef] = useKeenSlider({
     slides: {
       spacing: 48,
@@ -30,12 +30,10 @@ export default function Home({ products }: HomeProps) {
     },
   });
 
-  const handleProductData = (selectedProductIndex) => {
-    console.log(products);
-    console.log(selectedProductIndex);
-
+  const handleProductData = (selectedProductIndex: number) => {
     const selectedProductData = products[selectedProductIndex];
-    console.log(selectedProductData);
+
+    setSelectedProduct((prevState: any) => [...prevState, selectedProductData]);
   };
 
   return (
