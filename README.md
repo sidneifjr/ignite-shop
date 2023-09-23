@@ -14,6 +14,10 @@ Layout: https://www.figma.com/file/qmsUES7HA9SN7If869pmUb/Ignite-Shop-2.0-%E2%80
 
 https://app.rocketseat.com.br/h/forum/react-js/8c0249bb-2dc2-4f2f-bc6e-aaf1e647525a#0dba58b7-9dcb-4127-b5d5-6e1f6ae29ae3
 
+https://app.rocketseat.com.br/h/forum/react-js/f120410e-0c3a-45a0-a18e-9cad1b131b02
+
+https://stackoverflow.com/questions/54676966/push-method-in-react-hooks-usestate
+
 ## Docs
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
