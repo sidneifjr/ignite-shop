@@ -18,7 +18,8 @@ import {
 } from './styles';
 
 export const Cart = () => {
-  const { selectedProduct, isOpen, setIsOpen } = useContext(CartContext);
+  const { selectedProduct, totalPrice, setTotalPrice, isOpen, setIsOpen } =
+    useContext(CartContext);
 
   const closeHandler = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -71,7 +72,7 @@ export const Cart = () => {
         </li>
 
         <li>
-          Valor total: <strong>R$ 270,00</strong>
+          Valor total: <strong>R$ {totalPrice}</strong>
         </li>
       </CartInfo>
 

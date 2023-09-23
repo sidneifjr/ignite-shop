@@ -10,19 +10,18 @@ export const CartWrapper = styled('aside', {
   position: 'fixed',
   top: 0,
   right: 0,
-  display: 'none',
+  display: 'flex',
   flexDirection: 'column',
-  transition: 'transform cubic-bezier(.57,.21,.69, 1.25) 0.25s',
-  transform: 'translate3d(0,0,0)',
   zIndex: 9,
+  transform: 'translate3d(0,0,0)',
 
   '&[data-visible="false"]': {
     transform: 'translate3d(100%, 0, 0)',
   },
 
   '&[data-visible="true"]': {
-    transform: 'translate3d(0,0,0)',
-    display: 'flex',
+    transform: 'translate3d(0%, 0, 0)',
+    transition: 'transform cubic-bezier(.57,.21,.69, 1.25) 0.25s',
   },
 });
 

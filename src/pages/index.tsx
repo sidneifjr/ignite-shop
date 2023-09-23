@@ -17,9 +17,11 @@ import { HomeProps } from '@/interfaces/interfaces';
 import { HomeContainer, Product } from '@/styles/pages/home';
 
 import 'keen-slider/keen-slider.min.css';
+import { type } from 'os';
 
 export default function Home({ products }: HomeProps) {
-  const { selectedProduct, setSelectedProduct } = useContext<any>(CartContext);
+  const { selectedProduct, setSelectedProduct, totalPrice, setTotalPrice } =
+    useContext<any>(CartContext);
 
   const [sliderRef] = useKeenSlider({
     slides: {
@@ -33,7 +35,12 @@ export default function Home({ products }: HomeProps) {
   const handleProductData = (selectedProductIndex: number) => {
     const selectedProductData = products[selectedProductIndex];
 
+    const selectedProductDataPrice = parseInt(
+      selectedProductData.price.replace('R$', '')
+    );
+
     setSelectedProduct((prevState: any) => [...prevState, selectedProductData]);
+    setTotalPrice((prevState: any) => prevState + selectedProductDataPrice);
   };
 
   return (
@@ -62,6 +69,7 @@ export default function Home({ products }: HomeProps) {
                   alt=""
                   width={520}
                   height={480}
+                  // placeholder="blur"
                 />
               </Link>
 
