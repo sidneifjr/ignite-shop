@@ -1,39 +1,24 @@
 import type { AppProps } from 'next/app';
-
-import Image from 'next/image';
+import { Cart } from '@/components/Cart';
+import { CartProvider } from '@/context/CartContext';
 
 import { globalStyles } from '@/styles/global';
-import { Container, Header } from '@/styles/pages/app';
-
-import logoImg from '../assets/ignite-shop-logo.svg';
+import { Container } from '@/styles/pages/app';
+import { Header } from '@/components/Header';
 
 // Deve estar no escopo global, para que tais estilos não sejam carregados novamente em cada página.
 globalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { src, width, height } = logoImg;
-
   return (
-    <Container>
-      <Header>
-        <Image
-          src={src}
-          width={width}
-          height={height}
-          alt="logo"
-        />
+    <CartProvider>
+      <Container>
+        <Header />
 
-        <button style={{}}>
-          <Image
-            width={24}
-            height={24}
-            src="./bag.svg"
-            alt=""
-          />
-        </button>
-      </Header>
+        <Cart />
 
-      <Component {...pageProps} />
-    </Container>
+        <Component {...pageProps} />
+      </Container>
+    </CartProvider>
   );
 }
