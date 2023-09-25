@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react';
+import { keyframes, styled } from '@stitches/react';
 
 export const CartWrapper = styled('aside', {
   width: '100%',
@@ -86,9 +86,18 @@ export const CartList = styled('ul', {
   },
 });
 
+const fadeIn = keyframes({
+  '0%': { opacity: '0' },
+  '100%': { opacity: '1' },
+});
+
 export const CartListItem = styled('li', {
   display: 'flex',
   gap: '1.25rem',
+  opacity: 0,
+  transition: 'opacity ease-in-out 0.2s',
+  animation: `${fadeIn} 200ms`,
+  animationFillMode: 'forwards',
 });
 
 export const CartListItemContent = styled('div', {
