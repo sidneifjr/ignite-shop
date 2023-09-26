@@ -1,13 +1,6 @@
 import { ReactNode, createContext, useState } from 'react'
 
-import { HomeProps } from '@/interfaces/interfaces'
-
-type CartContextProps = {
-  selectedProduct?: HomeProps
-  setSelectedProduct?: React.Dispatch<React.SetStateAction<string | boolean>>
-  isOpen: boolean
-  setIsOpen: React.Dispatch<React.SetStateAction<string | boolean>>
-}
+import { CartContextProps, HomeProps } from '@/interfaces'
 
 export const CartContext = createContext({} as CartContextProps)
 
