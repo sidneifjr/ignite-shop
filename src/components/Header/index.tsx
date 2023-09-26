@@ -9,6 +9,8 @@ import Link from 'next/link'
 export const Header = () => {
   const { selectedProduct, isOpen, setIsOpen } = useContext(CartContext)
 
+  const selectedProductLength = selectedProduct?.length
+
   const openHandler = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     setIsOpen(!isOpen)
@@ -28,7 +30,7 @@ export const Header = () => {
       <button onClick={(e) => openHandler(e)}>
         <Image width={24} height={24} src="./bag.svg" alt="" />
 
-        <span>{selectedProduct?.length | 0}</span>
+        {selectedProductLength && <span>{selectedProductLength}</span>}
       </button>
     </HeaderWrapper>
   )

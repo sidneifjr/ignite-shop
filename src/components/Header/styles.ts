@@ -1,4 +1,5 @@
 import { styled } from '@/styles'
+import { fadeIn } from '@/keyframes'
 
 export const HeaderWrapper = styled('header', {
   width: '100%',
@@ -23,7 +24,6 @@ export const HeaderWrapper = styled('header', {
       width: '1.5rem',
       height: '1.5rem',
       fontSize: '0.875rem',
-      lineHeight: '160%',
       fontWeight: 700,
       textAlign: 'center',
       color: '$white',
@@ -35,6 +35,10 @@ export const HeaderWrapper = styled('header', {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      opacity: 0,
+      transition: 'opacity ease-in-out 0.2s',
+      animation: `${fadeIn} 200ms`,
+      animationFillMode: 'forwards',
     },
   },
 })
