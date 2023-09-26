@@ -1,26 +1,27 @@
 import { useContext } from 'react'
 
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { GetStaticProps } from 'next'
 
 import { CartContext } from '@/context/CartContext'
 
-import Stripe from 'stripe'
 import { stripe } from '@/lib/stripe'
+import Stripe from 'stripe'
 
 import { useKeenSlider } from 'keen-slider/react'
 
-import { HomeProps } from '@/interfaces/interfaces'
+import { HomeProps } from '@/interfaces'
 
 import { HomeContainer, Product } from '@/styles/pages/home'
+
+import { convertPriceInStringToNumber } from '@/utils'
 
 import 'keen-slider/keen-slider.min.css'
 
 export default function Home({ products }: HomeProps) {
-  const { selectedProduct, setSelectedProduct, totalPrice, setTotalPrice } =
-    useContext<any>(CartContext)
+  const { setSelectedProduct, setTotalPrice } = useContext<any>(CartContext)
 
   const [sliderRef] = useKeenSlider({
     slides: {
@@ -33,13 +34,14 @@ export default function Home({ products }: HomeProps) {
 
   const handleProductData = (selectedProductIndex: number) => {
     const selectedProductData = products[selectedProductIndex]
+    const selectedProductDataPrice = selectedProductData.price
 
-    const selectedProductDataPrice = parseInt(
-      selectedProductData.price.replace('R$', '')
+    const formattedPrice = convertPriceInStringToNumber(
+      selectedProductDataPrice
     )
 
     setSelectedProduct((prevState: any) => [...prevState, selectedProductData])
-    setTotalPrice((prevState: any) => prevState + selectedProductDataPrice)
+    setTotalPrice((prevState: any) => prevState + formattedPrice)
   }
 
   return (
