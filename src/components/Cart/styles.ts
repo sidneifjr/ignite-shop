@@ -1,4 +1,4 @@
-import { keyframes, styled } from '@stitches/react';
+import { keyframes, styled } from '@stitches/react'
 
 export const CartWrapper = styled('aside', {
   width: '100%',
@@ -23,7 +23,7 @@ export const CartWrapper = styled('aside', {
     transform: 'translate3d(0%, 0, 0)',
     transition: 'transform cubic-bezier(.57,.21,.69, 1.25) 0.25s',
   },
-});
+})
 
 export const CloseCartBtn = styled('button', {
   width: '1.5rem',
@@ -35,7 +35,7 @@ export const CloseCartBtn = styled('button', {
   alignItems: 'center',
   alignSelf: 'flex-end',
   cursor: 'pointer',
-});
+})
 
 export const CartImageWrapper = styled('div', {
   width: '6.37138rem',
@@ -45,7 +45,7 @@ export const CartImageWrapper = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-});
+})
 
 export const CartTitle = styled('strong', {
   fontSize: '1.25rem',
@@ -53,7 +53,7 @@ export const CartTitle = styled('strong', {
   fontWeight: 700,
   color: '$gray100',
   paddingTop: '1.5rem',
-});
+})
 
 export const CartList = styled('ul', {
   minHeight: '33rem',
@@ -84,12 +84,12 @@ export const CartList = styled('ul', {
   '&::-webkit-scrollbar-thumb:hover': {
     background: '#888',
   },
-});
+})
 
 const fadeIn = keyframes({
   '0%': { opacity: '0' },
   '100%': { opacity: '1' },
-});
+})
 
 export const CartListItem = styled('li', {
   display: 'flex',
@@ -98,7 +98,7 @@ export const CartListItem = styled('li', {
   transition: 'opacity ease-in-out 0.2s',
   animation: `${fadeIn} 200ms`,
   animationFillMode: 'forwards',
-});
+})
 
 export const CartListItemContent = styled('div', {
   display: 'flex',
@@ -126,7 +126,7 @@ export const CartListItemContent = styled('div', {
     paddingTop: '0.5rem',
     display: 'block',
   },
-});
+})
 
 export const CartInfo = styled('ul', {
   display: 'flex',
@@ -150,7 +150,7 @@ export const CartInfo = styled('ul', {
       color: '$gray100',
     },
   },
-});
+})
 
 export const CartSubmitBtn = styled('button', {
   width: '100%',
@@ -170,4 +170,4 @@ export const CartSubmitBtn = styled('button', {
   justifyContent: 'center',
   alignItems: 'center',
   cursor: 'pointer',
-});
+})

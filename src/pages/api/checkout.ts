@@ -1,19 +1,22 @@
-import { stripe } from "@/lib/stripe";
-import { NextApiRequest, NextApiResponse } from "next";
+import { stripe } from '@/lib/stripe'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 // Acessível na rota "/api/hello".
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { priceId } = req.body;
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const { priceId } = req.body
 
-  if(req.method !== 'POST'){
+  if (req.method !== 'POST') {
     return res.status(405).json({
-      error: 'Method not allowed.'
+      error: 'Method not allowed.',
     })
   }
 
-  if(!priceId){
+  if (!priceId) {
     return res.status(400).json({
-      error: 'Price not found.'
+      error: 'Price not found.',
     })
   }
 
@@ -28,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       {
         price: priceId,
         quantity: 1,
-      }
+      },
     ],
   })
 

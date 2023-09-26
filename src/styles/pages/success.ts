@@ -1,4 +1,4 @@
-import { styled } from "@stitches/react";
+import { styled } from '@stitches/react'
 
 export const SuccessContainer = styled('main', {
   display: 'flex',
@@ -9,7 +9,7 @@ export const SuccessContainer = styled('main', {
 
   h1: {
     fontSize: '$2xl',
-    color: '$gray100'
+    color: '$gray100',
   },
 
   p: {
@@ -30,8 +30,8 @@ export const SuccessContainer = styled('main', {
 
     '&:hover': {
       color: '$green300',
-    }
-  }
+    },
+  },
 })
 
 export const ImageContainer = styled('div', {
@@ -49,6 +49,6 @@ export const ImageContainer = styled('div', {
   justifyContent: 'center',
 
   img: {
-    objectFit: 'cover'
-  }
+    objectFit: 'cover',
+  },
 })

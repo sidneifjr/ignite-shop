@@ -1,4 +1,4 @@
-import { styled } from '@/styles';
+import { styled } from '@/styles'
 
 export const HeaderWrapper = styled('header', {
   width: '100%',
@@ -37,4 +37,4 @@ export const HeaderWrapper = styled('header', {
       alignItems: 'center',
     },
   },
-});
+})

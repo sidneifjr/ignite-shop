@@ -1,4 +1,4 @@
-import { styled } from '..';
+import { styled } from '..'
 
 export const Container = styled('div', {
   minHeight: '100vh',
@@ -6,4 +6,4 @@ export const Container = styled('div', {
   justifyContent: 'center',
   flexDirection: 'column',
   alignItems: 'flex-start',
-});
+})

@@ -1,4 +1,4 @@
-import { createStitches } from '@stitches/react';
+import { createStitches } from '@stitches/react'
 
 export const {
   config,
@@ -34,4 +34,4 @@ export const {
       '2xl': '2rem',
     },
   },
-});
+})

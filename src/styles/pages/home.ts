@@ -1,4 +1,4 @@
-import { styled } from '..';
+import { styled } from '..'
 
 export const HomeContainer = styled('main', {
   display: 'flex',
@@ -6,7 +6,7 @@ export const HomeContainer = styled('main', {
   maxWidth: 'calc(100vw - ((100vw - 1440px) / 2))',
   marginLeft: 'auto',
   minHeight: 656,
-});
+})
 
 export const Product = styled('div', {
   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
@@ -77,4 +77,4 @@ export const Product = styled('div', {
       opacity: 1,
     },
   },
-});
+})

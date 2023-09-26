@@ -1,18 +1,18 @@
-import { stripe } from '@/lib/stripe';
-import { ImageContainer, SuccessContainer } from '@/styles/pages/success';
-import { GetServerSideProps } from 'next';
-import Link from 'next/link';
-import Stripe from 'stripe';
+import { stripe } from '@/lib/stripe'
+import { ImageContainer, SuccessContainer } from '@/styles/pages/success'
+import { GetServerSideProps } from 'next'
+import Link from 'next/link'
+import Stripe from 'stripe'
 
-import Image from 'next/image';
-import Head from 'next/head';
+import Image from 'next/image'
+import Head from 'next/head'
 
 interface SuccessProps {
-  customerName: string;
+  customerName: string
   product: {
-    name: string;
-    imageUrl: string;
-  };
+    name: string
+    imageUrl: string
+  }
 }
 
 export default function Success({ customerName, product }: SuccessProps) {
@@ -20,10 +20,7 @@ export default function Success({ customerName, product }: SuccessProps) {
     <>
       <Head>
         <title> Compra efetuada | Ignite Shop</title>
-        <meta
-          name="robots"
-          content="noindex"
-        />
+        <meta name="robots" content="noindex" />
         {/* Evita que os crawlers indexem essa tela. */}
       </Head>
 
@@ -31,12 +28,7 @@ export default function Success({ customerName, product }: SuccessProps) {
         <h1>Compra efetuada!</h1>
 
         <ImageContainer>
-          <Image
-            src={product.imageUrl}
-            alt=""
-            width={120}
-            height={110}
-          />
+          <Image src={product.imageUrl} alt="" width={120} height={110} />
         </ImageContainer>
 
         <p>
@@ -47,7 +39,7 @@ export default function Success({ customerName, product }: SuccessProps) {
         <Link href="/">Voltar ao catalogo</Link>
       </SuccessContainer>
     </>
-  );
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -57,17 +49,17 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         destination: '/',
         permanent: false, // o redirect nao e permamente, ocorrendo apenas quando nao houver o session_id.
       },
-    };
+    }
   }
 
-  const sessionId = String(query.session_id);
+  const sessionId = String(query.session_id)
 
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
     expand: ['line_items', 'line_items.data.price.product'],
-  });
+  })
 
-  const customerName = session.customer_details.name;
-  const product = session.line_items.data[0].price.product as Stripe.Product;
+  const customerName = session.customer_details.name
+  const product = session.line_items.data[0].price.product as Stripe.Product
 
   return {
     props: {
@@ -77,5 +69,5 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         imageUrl: product.images[0],
       },
     },
-  };
-};
+  }
+}
