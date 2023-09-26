@@ -1,42 +1,68 @@
-import { MouseEvent, useContext } from 'react'
-
 import Image from 'next/image'
-import Link from 'next/link'
+
+import { MouseEvent, useContext } from 'react'
 
 import { CartContext } from '@/context/CartContext'
 
+import { convertPriceInStringToNumber } from '@/utils'
+
 import {
-  CartWrapper,
-  CartTitle,
-  CloseCartBtn,
   CartImageWrapper,
   CartInfo,
   CartList,
   CartListItem,
   CartListItemContent,
   CartSubmitBtn,
+  CartTitle,
+  CartWrapper,
+  CloseCartBtn,
 } from './styles'
 
 export const Cart = () => {
-  const { selectedProduct, totalPrice, setTotalPrice, isOpen, setIsOpen } =
-    useContext(CartContext)
+  const {
+    selectedProduct,
+    setSelectedProduct,
+    totalPrice,
+    setTotalPrice,
+    isOpen,
+    setIsOpen,
+  } = useContext(CartContext)
 
-  const closeHandler = (e: MouseEvent<HTMLButtonElement>) => {
+  const selectedProductLength = selectedProduct?.length
+
+  const closeHandler = (e: MouseEvent) => {
     e.preventDefault()
     setIsOpen(!isOpen)
   }
 
-  const products = selectedProduct?.map((item) => {
+  const handleRemoveProduct = (e: MouseEvent, currentProduct: any) => {
+    console.log(typeof currentProduct)
+    e.preventDefault()
+
+    const currentProductPrice = currentProduct.price
+    const formattedPrice = convertPriceInStringToNumber(currentProductPrice)
+
+    const filteredProduct = selectedProduct?.filter(
+      (selectedProductItem: any) => selectedProductItem !== currentProduct
+    )
+
+    setSelectedProduct!(filteredProduct)
+    setTotalPrice((prevState: number) => prevState - formattedPrice)
+  }
+
+  const products = selectedProduct?.map((item: any) => {
     return (
       <CartListItem key={item.id}>
         <CartImageWrapper>
-          <Image src={item.imageUrl} alt="image" width={'94'} height={'94'} />
+          <Image src={item.imageUrl} alt="image" width="94" height="94" />
         </CartImageWrapper>
 
         <CartListItemContent>
           <span>{item.name}</span>
           <strong>{item.price}</strong>
-          <Link href="#">Remover</Link>
+          <a href="#" onClick={(e) => handleRemoveProduct(e, item)}>
+            Remover
+          </a>
         </CartListItemContent>
       </CartListItem>
     )
@@ -51,14 +77,26 @@ export const Cart = () => {
       <CartTitle>Sacola de compras</CartTitle>
 
       <CartList>
-        {selectedProduct?.length !== 0
-          ? products
-          : 'Carrinho vazio. Adicione itens!'}
+        {selectedProductLength !== 0 ? (
+          products
+        ) : (
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'column',
+              gap: '2rem',
+            }}
+          >
+            <Image src="/sad.svg" alt="cart empty" width={170} height={170} />
+            <p>Carrinho vazio. Adicione itens!</p>
+          </div>
+        )}
       </CartList>
 
       <CartInfo>
         <li>
-          Quantidade: <strong>{selectedProduct?.length} itens</strong>
+          Quantidade: <strong>{selectedProductLength} itens</strong>
         </li>
 
         <li>
