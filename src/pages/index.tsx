@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -18,17 +18,29 @@ import { HomeContainer, Product } from '@/styles/pages/home'
 
 import { convertPriceInStringToNumber } from '@/utils'
 
+import { Arrow } from '@/components/SliderArrow'
 import 'keen-slider/keen-slider.min.css'
 
 export default function Home({ products }: HomeProps) {
   const { setSelectedProduct, setTotalPrice } = useContext<any>(CartContext)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [loaded, setLoaded] = useState(false)
 
-  const [sliderRef] = useKeenSlider({
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+    initial: 0,
+    defaultAnimation: {
+      duration: 600,
+    },
     slides: {
       spacing: 48,
-      perView: 1.8,
-      // configurar para, quando o item ativo nao for o primeiro slider, centralizar os slides.
-      // origin: 'center',
+      perView: 2.5,
+      origin: 'center',
+    },
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel)
+    },
+    created() {
+      setLoaded(true)
     },
   })
 
@@ -82,6 +94,25 @@ export default function Home({ products }: HomeProps) {
           )
         })}
       </HomeContainer>
+
+      {loaded && instanceRef.current && (
+        <>
+          <Arrow
+            position="left"
+            onClick={(_e: MouseEvent) => instanceRef.current?.prev()}
+            disabled={currentSlide === 0}
+          />
+
+          <Arrow
+            position="right"
+            onClick={(_e: MouseEvent) => instanceRef.current?.next()}
+            disabled={
+              currentSlide ===
+              instanceRef.current.track.details.slides.length - 1
+            }
+          />
+        </>
+      )}
     </>
   )
 }
