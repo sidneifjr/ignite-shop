@@ -59,7 +59,10 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     expand: ['line_items', 'line_items.data.price.product'],
   })
 
+  // @ts-ignore
   const customerName = session.customer_details.name
+
+  // @ts-ignore
   const product = session.line_items.data[0].price.product as Stripe.Product
 
   return {
