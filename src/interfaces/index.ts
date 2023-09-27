@@ -1,11 +1,4 @@
-export type CartContextProps = {
-  selectedProduct?: HomeProps
-  setSelectedProduct?: React.Dispatch<React.SetStateAction<HomeProps>>
-  isOpen: boolean
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  totalPrice: number
-  setTotalPrice: React.Dispatch<React.SetStateAction<number>>
-}
+import { Dispatch, SetStateAction } from 'react'
 
 export interface HomeProps {
   products: {
@@ -17,4 +10,19 @@ export interface HomeProps {
   length: number
   filter: any
   map: any
+}
+
+export type CartContextProps = {
+  selectedProduct?: HomeProps
+  setSelectedProduct?: Dispatch<SetStateAction<HomeProps>>
+  isOpen: boolean
+  setIsOpen: Dispatch<SetStateAction<boolean>>
+  totalPrice: number
+  setTotalPrice: Dispatch<SetStateAction<number>>
+}
+
+export interface ArrowProps {
+  position: string
+  disabled: boolean
+  onClick: (e: MouseEvent) => void
 }
