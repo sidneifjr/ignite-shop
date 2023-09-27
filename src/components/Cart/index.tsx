@@ -45,7 +45,7 @@ export const Cart = () => {
       (selectedProductItem: any) => selectedProductItem !== currentProduct
     )
 
-    setSelectedProduct!(filteredProduct)
+    setSelectedProduct!(filteredProduct!)
     setTotalPrice((prevState: number) => prevState - formattedPrice)
   }
 
