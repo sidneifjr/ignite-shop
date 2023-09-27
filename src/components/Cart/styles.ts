@@ -21,7 +21,7 @@ export const CartWrapper = styled('aside', {
 
   '&[data-visible="true"]': {
     transform: 'translate3d(0%, 0, 0)',
-    transition: 'transform cubic-bezier(.57,.21,.69, 1.25) 0.25s',
+    transition: 'transform cubic-bezier(0.33, 1, 0.68, 1) 0.25s',
   },
 })
 
@@ -30,6 +30,7 @@ export const CloseCartBtn = styled('button', {
   height: '1.5rem',
   background: 'transparent',
   border: 'none',
+  position: 'absolute',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -52,16 +53,15 @@ export const CartTitle = styled('strong', {
   lineHeight: '160%',
   fontWeight: 700,
   color: '$gray100',
-  paddingTop: '1.5rem',
 })
 
 export const CartList = styled('ul', {
   minHeight: '33rem',
-  maxHeight: '33rem',
   marginTop: '2.03rem',
   display: 'flex',
   flexDirection: 'column',
   gap: '1.5rem',
+  flex: 1,
   overflowY: 'scroll',
 
   /* width */
@@ -95,7 +95,7 @@ export const CartListItem = styled('li', {
   display: 'flex',
   gap: '1.25rem',
   opacity: 0,
-  transition: 'opacity ease-in-out 0.2s',
+  transition: 'opacity cubic-bezier(0.33, 1, 0.68, 1) 0.25s',
   animation: `${fadeIn} 200ms`,
   animationFillMode: 'forwards',
 })

@@ -32,11 +32,10 @@ export const Cart = () => {
 
   const closeHandler = (e: MouseEvent) => {
     e.preventDefault()
-    setIsOpen(!isOpen)
+    setIsOpen((state) => !state)
   }
 
   const handleRemoveProduct = (e: MouseEvent, currentProduct: any) => {
-    console.log(typeof currentProduct)
     e.preventDefault()
 
     const currentProductPrice = currentProduct.price
@@ -60,6 +59,7 @@ export const Cart = () => {
         <CartListItemContent>
           <span>{item.name}</span>
           <strong>{item.price}</strong>
+
           <a href="#" onClick={(e) => handleRemoveProduct(e, item)}>
             Remover
           </a>
@@ -76,23 +76,21 @@ export const Cart = () => {
 
       <CartTitle>Sacola de compras</CartTitle>
 
-      <CartList>
-        {selectedProductLength !== 0 ? (
-          products
-        ) : (
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              flexDirection: 'column',
-              gap: '2rem',
-            }}
-          >
-            <Image src="/sad.svg" alt="cart empty" width={170} height={170} />
-            <p>Carrinho vazio. Adicione itens!</p>
-          </div>
-        )}
-      </CartList>
+      {selectedProductLength !== 0 ? (
+        <CartList>{products}</CartList>
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+            gap: '2rem',
+          }}
+        >
+          <Image src="/sad.svg" alt="cart empty" width={170} height={170} />
+          <p>Carrinho vazio. Adicione itens!</p>
+        </div>
+      )}
 
       <CartInfo>
         <li>
