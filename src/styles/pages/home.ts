@@ -3,13 +3,14 @@ import { styled } from '..'
 export const HomeContainer = styled('main', {
   display: 'flex',
   width: '100%',
-  maxWidth: 'calc(100vw - ((100vw - 1440px) / 2))',
   marginLeft: 'auto',
   minHeight: 656,
+  maxHeight: '70vh',
+  flex: 1,
 })
 
 export const Product = styled('div', {
-  background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
+  background: 'linear-gradient(180deg, #7465d4 0%, #1ea483 100%)',
   borderRadius: 8,
   cursor: 'pointer',
   position: 'relative',

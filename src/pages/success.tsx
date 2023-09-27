@@ -4,8 +4,8 @@ import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import Stripe from 'stripe'
 
-import Image from 'next/image'
 import Head from 'next/head'
+import Image from 'next/image'
 
 interface SuccessProps {
   customerName: string
@@ -25,18 +25,19 @@ export default function Success({ customerName, product }: SuccessProps) {
       </Head>
 
       <SuccessContainer>
-        <h1>Compra efetuada!</h1>
-
         <ImageContainer>
           <Image src={product.imageUrl} alt="" width={120} height={110} />
         </ImageContainer>
 
+        <h1>Compra efetuada!</h1>
+
         <p>
           Uhuul <strong>{customerName}</strong>, sua{' '}
-          <strong>{product.name}</strong> ja esta a caminho da sua casa.
+          <strong>{product.name}</strong> sua compra já está a caminho da sua
+          casa.
         </p>
 
-        <Link href="/">Voltar ao catalogo</Link>
+        <Link href="/">Voltar ao catálogo </Link>
       </SuccessContainer>
     </>
   )

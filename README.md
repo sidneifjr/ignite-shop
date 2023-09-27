@@ -2,9 +2,9 @@
 
 Nesse desafio, você vai aproveitar a aplicação que já desenvolvemos na trilha para implementar um carrinho que utilizará os dados da API do Stripe para buscar os itens existentes, e controlará, através da sua aplicação, o número de itens que a pessoa deseja comprar.
 
-- Você utilizará a listagem já criada pela aplicação, mas adicionará a possibilidade de adicionar aquele item ao carrinho na página do produto.
-- Salvar todos os itens selecionados em sua aplicação, e exibir o número de itens no carrinho
-- Enviar o carrinho que você armazenou na aplicação para a rota de checkout, onde irá gerar a sessão de checkout com os `line_items` necessários.
+- [x] Você utilizará a listagem já criada pela aplicação, mas adicionará a possibilidade de adicionar aquele item ao carrinho na página do produto.
+- [x] Salvar todos os itens selecionados em sua aplicação, e exibir o número de itens no carrinho
+- [ ] Enviar o carrinho que você armazenou na aplicação para a rota de checkout, onde irá gerar a sessão de checkout com os `line_items` necessários.
 
 Para completar esse desafio você vai precisar de realizar algumas pesquisas para entender sobre a API do Stripe.
 
@@ -12,11 +12,17 @@ Layout: https://www.figma.com/file/qmsUES7HA9SN7If869pmUb/Ignite-Shop-2.0-%E2%80
 
 ## Informações importantes
 
-https://app.rocketseat.com.br/h/forum/react-js/8c0249bb-2dc2-4f2f-bc6e-aaf1e647525a#0dba58b7-9dcb-4127-b5d5-6e1f6ae29ae3
+1. https://app.rocketseat.com.br/h/forum/react-js/8c0249bb-2dc2-4f2f-bc6e-aaf1e647525a#0dba58b7-9dcb-4127-b5d5-6e1f6ae29ae3
 
-https://app.rocketseat.com.br/h/forum/react-js/f120410e-0c3a-45a0-a18e-9cad1b131b02
+2. https://app.rocketseat.com.br/h/forum/react-js/f120410e-0c3a-45a0-a18e-9cad1b131b02
 
-https://stackoverflow.com/questions/54676966/push-method-in-react-hooks-usestate
+3. https://stackoverflow.com/questions/54676966/push-method-in-react-hooks-usestate
+
+4. Devido à introdução do Streaming e o uso de Server Components com o React 18, o Stitches não é mais ativamente suportado.
+
+https://github.com/stitchesjs/stitches/discussions/1149
+
+Uma opção viável é o PandaCSS: https://panda-css.com/docs/migration/stitches
 
 ## Docs
 

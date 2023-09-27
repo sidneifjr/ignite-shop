@@ -1,18 +1,14 @@
 import { styled } from '..'
 
 export const ProductContainer = styled('main', {
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  alignItems: 'stretch',
-  gap: '4rem',
-
-  maxWidth: 1440,
+  maxWidth: '100rem',
   margin: '0 auto',
+  display: 'flex',
+  gap: '4rem',
 })
 
 export const ImageContainer = styled('div', {
-  width: '100$',
-  maxWidth: 676,
+  minWidth: 676,
   height: '656px',
   background: 'linear-gradient(rgb(30, 164, 131) 0%, rgb(116, 101, 212) 100%)',
   borderRadius: 8,
