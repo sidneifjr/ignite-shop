@@ -45,15 +45,22 @@ export default function Home({ products }: HomeProps) {
   })
 
   const handleProductData = (selectedProductIndex: number) => {
-    const selectedProductData = products[selectedProductIndex]
-    const selectedProductDataPrice = selectedProductData.price
+    if (products) {
+      // @ts-ignore
+      const selectedProductData = products[selectedProductIndex]
 
-    const formattedPrice = convertPriceInStringToNumber(
-      selectedProductDataPrice
-    )
+      const selectedProductDataPrice = selectedProductData.price
 
-    setSelectedProduct((prevState: any) => [...prevState, selectedProductData])
-    setTotalPrice((prevState: any) => prevState + formattedPrice)
+      const formattedPrice = convertPriceInStringToNumber(
+        selectedProductDataPrice
+      )
+
+      setSelectedProduct((prevState: any) => [
+        ...prevState,
+        selectedProductData,
+      ])
+      setTotalPrice((prevState: any) => prevState + formattedPrice)
+    }
   }
 
   return (
@@ -63,7 +70,7 @@ export default function Home({ products }: HomeProps) {
       </Head>
 
       <HomeContainer ref={sliderRef} className="keen-slider">
-        {products.map((product, index) => {
+        {products?.map((product: any, index: number) => {
           return (
             <Product key={product.id} className="keen-slider__slide">
               <Link
@@ -99,13 +106,13 @@ export default function Home({ products }: HomeProps) {
         <>
           <Arrow
             position="left"
-            onClick={(_e: MouseEvent) => instanceRef.current?.prev()}
+            onClick={() => instanceRef.current?.prev()}
             disabled={currentSlide === 0}
           />
 
           <Arrow
             position="right"
-            onClick={(_e: MouseEvent) => instanceRef.current?.next()}
+            onClick={() => instanceRef.current?.next()}
             disabled={
               currentSlide ===
               instanceRef.current.track.details.slides.length - 1

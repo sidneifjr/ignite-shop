@@ -7,6 +7,7 @@ export type Products = {
     imageUrl: string
     price: string
   }[]
+  map: any
 }
 
 export interface HomeProps {
