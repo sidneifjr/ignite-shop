@@ -22,7 +22,9 @@ Layout: https://www.figma.com/file/qmsUES7HA9SN7If869pmUb/Ignite-Shop-2.0-%E2%80
 
 https://github.com/stitchesjs/stitches/discussions/1149
 
-Uma opção viável é o PandaCSS: https://panda-css.com/docs/migration/stitches
+PandaCSS é uma opção viável: https://panda-css.com/docs/migration/stitches
+
+5. https://stackoverflow.com/questions/52423842/what-is-not-assignable-to-parameter-of-type-never-error-in-typescript
 
 ## Docs
 

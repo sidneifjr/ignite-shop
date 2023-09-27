@@ -9,7 +9,7 @@ export const Arrow = ({ position, disabled, onClick }: ArrowProps) => {
     <ArrowWrapper
       position={position}
       className={isDisabled ? 'disabled' : ''}
-      onClick={(e) => onClick(e)}
+      onClick={() => onClick()}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
