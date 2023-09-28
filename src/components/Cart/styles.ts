@@ -1,4 +1,5 @@
-import { keyframes, styled } from '@stitches/react'
+import { fadeIn } from '@/keyframes'
+import { styled } from '@stitches/react'
 
 export const CartWrapper = styled('aside', {
   width: '100%',
@@ -56,7 +57,6 @@ export const CartTitle = styled('strong', {
 })
 
 export const CartList = styled('ul', {
-  minHeight: '33rem',
   marginTop: '2.03rem',
   display: 'flex',
   flexDirection: 'column',
@@ -86,16 +86,41 @@ export const CartList = styled('ul', {
   },
 })
 
-const fadeIn = keyframes({
-  '0%': { opacity: '0' },
-  '100%': { opacity: '1' },
+export const EmptyCartWrapper = styled('div', {
+  marginTop: '2.03rem',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  gap: '2rem',
+  flex: 1,
+
+  /* width */
+  '&::-webkit-scrollbar': {
+    width: '5px',
+  },
+
+  /* Track */
+  '&::-webkit-scrollbar-track': {
+    background: 'transparent',
+  },
+
+  /* Handle */
+  '&::-webkit-scrollbar-thumb': {
+    background: '$white',
+    borderRadius: '0.5rem',
+  },
+
+  /* Handle on hover */
+  '&::-webkit-scrollbar-thumb:hover': {
+    background: '#888',
+  },
 })
 
 export const CartListItem = styled('li', {
   display: 'flex',
   gap: '1.25rem',
   opacity: 0,
-  transition: 'opacity cubic-bezier(0.33, 1, 0.68, 1) 0.25s',
   animation: `${fadeIn} 200ms`,
   animationFillMode: 'forwards',
 })

@@ -16,6 +16,7 @@ import {
   CartTitle,
   CartWrapper,
   CloseCartBtn,
+  EmptyCartWrapper,
 } from './styles'
 
 export const Cart = () => {
@@ -79,17 +80,10 @@ export const Cart = () => {
       {selectedProductLength !== 0 ? (
         <CartList>{products}</CartList>
       ) : (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column',
-            gap: '2rem',
-          }}
-        >
+        <EmptyCartWrapper>
           <Image src="/sad.svg" alt="cart empty" width={170} height={170} />
           <p>Carrinho vazio. Adicione itens!</p>
-        </div>
+        </EmptyCartWrapper>
       )}
 
       <CartInfo>
