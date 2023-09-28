@@ -67,7 +67,11 @@ export default function Product({ product }: ProductProps) {
             disabled={isCreatingCheckoutSession}
             onClick={handleBuyProduct}
           >
-            Comprar agora
+            {isCreatingCheckoutSession ? (
+              <Image src="/loader.svg" alt="loader" width="22" height="22" />
+            ) : (
+              'Comprar agora'
+            )}
           </button>
         </ProductDetails>
       </ProductContainer>
