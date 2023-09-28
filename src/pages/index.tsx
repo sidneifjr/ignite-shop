@@ -59,7 +59,8 @@ export default function Home({ products }: HomeProps) {
         ...prevState,
         selectedProductData,
       ])
-      setTotalPrice((prevState: any) => prevState + formattedPrice)
+
+      setTotalPrice((prevState: number) => prevState + formattedPrice)
     }
   }
 

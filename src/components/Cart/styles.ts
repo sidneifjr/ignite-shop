@@ -151,6 +151,27 @@ export const CartListItemContent = styled('div', {
     paddingTop: '0.5rem',
     display: 'block',
   },
+
+  '&.flag': {
+    width: '1.5rem',
+    height: '1.5rem',
+    fontSize: '0.875rem',
+    fontWeight: 700,
+    textAlign: 'center',
+    color: '$white',
+    background: '$green500',
+    borderRadius: '62.5rem',
+    position: 'absolute',
+    top: -10,
+    right: -10,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    opacity: 0,
+    transition: 'opacity ease-in-out 0.2s',
+    animation: `${fadeIn} 200ms`,
+    animationFillMode: 'forwards',
+  },
 })
 
 export const CartInfo = styled('ul', {

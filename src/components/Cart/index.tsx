@@ -50,7 +50,7 @@ export const Cart = () => {
     setTotalPrice((prevState: number) => prevState - formattedPrice)
   }
 
-  const products = selectedProduct?.map((item: any) => {
+  const products = selectedProduct?.map((item: any, index: number) => {
     return (
       <CartListItem key={item.id}>
         <CartImageWrapper>
@@ -64,6 +64,8 @@ export const Cart = () => {
           <a href="#" onClick={(e) => handleRemoveProduct(e, item)}>
             Remover
           </a>
+
+          <p className="flag">{index}</p>
         </CartListItemContent>
       </CartListItem>
     )
@@ -92,7 +94,13 @@ export const Cart = () => {
         </li>
 
         <li>
-          Valor total: <strong>R$ {totalPrice}</strong>
+          Valor total:{' '}
+          <strong>
+            {new Intl.NumberFormat('pt-br', {
+              style: 'currency',
+              currency: 'BRL',
+            }).format(totalPrice / 100)}
+          </strong>
         </li>
       </CartInfo>
 
