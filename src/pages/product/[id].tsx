@@ -46,10 +46,12 @@ export default function Product({ product }: ProductProps) {
     }
   }
 
+  const pageTitle = `${product?.name} | Ignite Shop`
+
   return (
     <>
       <Head>
-        <title> {product?.name} | Ignite Shop</title>
+        <title>{pageTitle}</title>
       </Head>
 
       <ProductContainer>
@@ -108,6 +110,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }).format(priceUnit / 100),
         description: product?.description,
         defaultPriceId: price.id,
+        quantity: 0,
       },
     },
     revalidate: 60 * 60 * 1, // 1 hour
