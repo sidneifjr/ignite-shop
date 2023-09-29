@@ -1,16 +1,21 @@
 import { Dispatch, SetStateAction } from 'react'
 
+export type Product = {
+  id: string
+  name: string
+  imageUrl: string
+  price: string
+}
+
 export type Products = {
-  products?: {
-    id: string
-    name: string
-    imageUrl: string
-    price: string
-  }[]
+  filter: any
+  quantity: number
+  products?: Product[]
   map: any
 }
 
 export interface HomeProps {
+  quantity?: number
   products?: Products
   length: number
   filter: any
