@@ -26,6 +26,10 @@ PandaCSS é uma opção viável: https://panda-css.com/docs/migration/stitches
 
 5. https://stackoverflow.com/questions/52423842/what-is-not-assignable-to-parameter-of-type-never-error-in-typescript
 
+6. https://github.com/vercel/next.js/discussions/48255
+
+7. https://github.com/vercel/next.js/discussions/38256
+
 ## Docs
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
