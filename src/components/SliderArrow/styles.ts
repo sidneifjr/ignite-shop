@@ -7,12 +7,12 @@ export const ArrowWrapper = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  cursor: 'pointer',
   transition:
     'width cubic-bezier(0.33, 1, 0.68, 1) 0.25s, opacity cubic-bezier(0.33, 1, 0.68, 1) 0.25s',
 
-  '&:hover': {
+  '&:not(.disabled):hover': {
     width: '8.5rem',
+    cursor: 'pointer',
   },
 
   '&.disabled': {
