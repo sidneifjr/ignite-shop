@@ -30,6 +30,16 @@ PandaCSS é uma opção viável: https://panda-css.com/docs/migration/stitches
 
 7. https://github.com/vercel/next.js/discussions/38256
 
+8. https://www.youtube.com/watch?v=Bz3No1RFXWY&ab_channel=DaveGray
+
+## Considerar
+
+- [ ] Permitir adicao do item ao carrinho, na pagina especifica do produto.
+- [ ] Filtro de produto (formato de select)
+- [ ] Geracao de imagens do produto com uma pessoa utilizando, via AI.
+- [ ] Transicao animada entre paginas.
+- [ ] Context Selector.
+
 ## Docs
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
