@@ -55,6 +55,21 @@ export default function Home({ products }: HomeProps) {
         selectedProductDataPrice
       )
 
+      // const checkIfProductAlreadyExists = products.some((productItem: any) => {
+      //   console.log('productItem.id is:', productItem.id)
+      //   console.log('selectedProductData.id is:', selectedProductData.id)
+
+      //   if (productItem.id !== selectedProductData.id) {
+      //     return false
+      //   }
+
+      //   return true
+      // })
+
+      // console.log(checkIfProductAlreadyExists)
+
+      // checkIfProductAlreadyExists ? (selectedProductData.quantity += 1) : ''
+
       setSelectedProduct((prevState: any) => [
         ...prevState,
         selectedProductData,
@@ -74,17 +89,13 @@ export default function Home({ products }: HomeProps) {
         {products?.map((product: any, index: number) => {
           return (
             <Product key={product.id} className="keen-slider__slide">
-              <Link
-                key={product.id}
-                href={`/product/${product.id}`}
-                prefetch={false}
-              >
+              <Link href={`/product/${product.id}`} prefetch={false}>
                 <Image
                   src={product.imageUrl}
-                  alt=""
+                  alt={product.name}
                   width={520}
                   height={480}
-                  // placeholder="blur"
+                  priority={true}
                 />
               </Link>
 
@@ -129,6 +140,8 @@ export default function Home({ products }: HomeProps) {
 // Roda no servidor Node, provisionado pelo Next; útil quando queremos realizar uma chamada de API oculta ao usuário final.
 // Posso inserir código de autenticação, acesso a banco de dados, requisições, dados sensíveis, etc.
 export const getStaticProps: GetStaticProps = async () => {
+  // console.log(await stripe.products.list({}))
+
   const response = await stripe.products.list({
     expand: ['data.default_price'],
   })
@@ -145,6 +158,7 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL',
       }).format(priceUnit / 100),
+      quantity: 0,
     }
   })
 
