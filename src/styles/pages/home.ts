@@ -23,6 +23,14 @@ export const Product = styled('div', {
     objectFit: 'cover',
   },
 
+  a: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+
   footer: {
     position: 'absolute',
     bottom: '0.25rem',
