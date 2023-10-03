@@ -35,10 +35,13 @@ PandaCSS é uma opção viável: https://panda-css.com/docs/migration/stitches
 ## Considerar
 
 - [ ] Permitir adicao do item ao carrinho, na pagina especifica do produto.
+- [ ] Mover o checkout para o submit do cart.
 - [ ] Filtro de produto (formato de select)
 - [ ] Geracao de imagens do produto com uma pessoa utilizando, via AI.
 - [ ] Transicao animada entre paginas.
 - [ ] Context Selector.
+- [ ] Barra fixa ao topo da pagina usada como loading, acompanhando o carregamento da mesma.
+- [ ] Migracao para App Router e Server Components.
 
 ## Docs
 
