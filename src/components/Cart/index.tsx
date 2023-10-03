@@ -50,11 +50,12 @@ export const Cart = () => {
     setTotalPrice((prevState: number) => prevState - formattedPrice)
   }
 
-  const products = selectedProduct?.map((item: any, index: number) => {
+  const products = selectedProduct?.map((item: any) => {
     return (
       <CartListItem key={item.id}>
         <CartImageWrapper>
           <Image src={item.imageUrl} alt="image" width="94" height="94" />
+          {item.quantity !== 1 && <p className="flag">{item.quantity}</p>}
         </CartImageWrapper>
 
         <CartListItemContent>
@@ -64,8 +65,6 @@ export const Cart = () => {
           <a href="#" onClick={(e) => handleRemoveProduct(e, item)}>
             Remover
           </a>
-
-          <p className="flag">{index}</p>
         </CartListItemContent>
       </CartListItem>
     )
@@ -73,7 +72,7 @@ export const Cart = () => {
 
   return (
     <CartWrapper data-visible={isOpen ? true : false}>
-      <CloseCartBtn onClick={(e) => closeHandler(e)}>
+      <CloseCartBtn onClick={(e: any) => closeHandler(e)}>
         <Image src="./close.svg" alt="Close Modal" width="24" height="24" />
       </CloseCartBtn>
 
