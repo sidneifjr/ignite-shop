@@ -4,6 +4,7 @@ import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import Stripe from 'stripe'
 
+import { motion } from 'framer-motion'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -24,21 +25,29 @@ export default function Success({ customerName, product }: SuccessProps) {
         {/* Evita que os crawlers indexem essa tela. */}
       </Head>
 
-      <SuccessContainer>
-        <ImageContainer>
-          <Image src={product.imageUrl} alt="" width={120} height={110} />
-        </ImageContainer>
+      <motion.div
+        initial={{ y: '25%', opacity: 0 }}
+        animate={{ y: '0%', opacity: 1 }}
+        transition={{ duration: 0.75, ease: [0.33, 1, 0.68, 1] }}
+        style={{ margin: '0 auto' }}
+        exit={{ y: '-25%', opacity: 0 }}
+      >
+        <SuccessContainer>
+          <ImageContainer>
+            <Image src={product.imageUrl} alt="" width={120} height={110} />
+          </ImageContainer>
 
-        <h1>Compra efetuada!</h1>
+          <h1>Compra efetuada!</h1>
 
-        <p>
-          Uhuul <strong>{customerName}</strong>, sua{' '}
-          <strong>{product.name}</strong> sua compra já está a caminho da sua
-          casa.
-        </p>
+          <p>
+            Uhuul <strong>{customerName}</strong>, sua{' '}
+            <strong>{product.name}</strong> sua compra já está a caminho da sua
+            casa.
+          </p>
 
-        <Link href="/">Voltar ao catálogo </Link>
-      </SuccessContainer>
+          <Link href="/">Voltar ao catálogo </Link>
+        </SuccessContainer>
+      </motion.div>
     </>
   )
 }

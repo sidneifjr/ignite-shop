@@ -5,6 +5,7 @@ import {
   ProductDetails,
 } from '@/styles/pages/product'
 import axios from 'axios'
+import { motion } from 'framer-motion'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -49,7 +50,13 @@ export default function Product({ product }: ProductProps) {
   const pageTitle = `${product?.name} | Ignite Shop`
 
   return (
-    <>
+    <motion.div
+      initial={{ y: '25%', opacity: 0 }}
+      animate={{ y: '0%', opacity: 1 }}
+      transition={{ duration: 0.75, delay: 0.4, ease: [0.33, 1, 0.68, 1] }}
+      style={{ margin: '0 auto' }}
+      exit={{ y: '-25%', opacity: 0 }}
+    >
       <Head>
         <title>{pageTitle}</title>
       </Head>
@@ -77,7 +84,7 @@ export default function Product({ product }: ProductProps) {
           </button>
         </ProductDetails>
       </ProductContainer>
-    </>
+    </motion.div>
   )
 }
 

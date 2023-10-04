@@ -19,6 +19,8 @@ import { HomeContainer, Product } from '@/styles/pages/home'
 import { convertPriceInStringToNumber } from '@/utils'
 
 import { Arrow } from '@/components/SliderArrow'
+import { motion } from 'framer-motion'
+
 import 'keen-slider/keen-slider.min.css'
 
 export default function Home({ products }: HomeProps) {
@@ -85,53 +87,60 @@ export default function Home({ products }: HomeProps) {
         <title>Ignite Shop</title>
       </Head>
 
-      <HomeContainer ref={sliderRef} className="keen-slider">
-        {products?.map((product: any, index: number) => {
-          return (
-            <Product key={product.id} className="keen-slider__slide">
-              <Link href={`/product/${product.id}`} prefetch={false}>
-                <Image
-                  src={product.imageUrl}
-                  alt={product.name}
-                  width={520}
-                  height={480}
-                  priority={true}
-                />
-              </Link>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.25, ease: [0.33, 1, 0.68, 1] }}
+        exit={{ opacity: 0 }}
+      >
+        <HomeContainer ref={sliderRef} className="keen-slider">
+          {products?.map((product: any, index: number) => {
+            return (
+              <Product key={product.id} className="keen-slider__slide">
+                <Link href={`/product/${product.id}`} prefetch={false}>
+                  <Image
+                    src={product.imageUrl}
+                    alt={product.name}
+                    width={520}
+                    height={480}
+                    priority={true}
+                  />
+                </Link>
 
-              <footer>
-                <section>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
-                </section>
+                <footer>
+                  <section>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </section>
 
-                <button onClick={() => handleProductData(index)}>
-                  <Image width={32} height={32} src="./bag.svg" alt="" />
-                </button>
-              </footer>
-            </Product>
-          )
-        })}
-      </HomeContainer>
+                  <button onClick={() => handleProductData(index)}>
+                    <Image width={32} height={32} src="./bag.svg" alt="" />
+                  </button>
+                </footer>
+              </Product>
+            )
+          })}
+        </HomeContainer>
 
-      {loaded && instanceRef.current && (
-        <>
-          <Arrow
-            position="left"
-            onClick={() => instanceRef.current?.prev()}
-            disabled={currentSlide === 0}
-          />
+        {loaded && instanceRef.current && (
+          <>
+            <Arrow
+              position="left"
+              onClick={() => instanceRef.current?.prev()}
+              disabled={currentSlide === 0}
+            />
 
-          <Arrow
-            position="right"
-            onClick={() => instanceRef.current?.next()}
-            disabled={
-              currentSlide ===
-              instanceRef.current.track.details.slides.length - 1
-            }
-          />
-        </>
-      )}
+            <Arrow
+              position="right"
+              onClick={() => instanceRef.current?.next()}
+              disabled={
+                currentSlide ===
+                instanceRef.current.track.details.slides.length - 1
+              }
+            />
+          </>
+        )}
+      </motion.div>
     </>
   )
 }

@@ -18,7 +18,7 @@ Layout: https://www.figma.com/file/qmsUES7HA9SN7If869pmUb/Ignite-Shop-2.0-%E2%80
 
 3. https://stackoverflow.com/questions/54676966/push-method-in-react-hooks-usestate
 
-4. Devido à introdução do Streaming e o uso de Server Components com o React 18, o Stitches não é mais ativamente suportado.
+4. Devido à introdução do **Streaming** e **Server Components** com o React 18, o Stitches não é mais ativamente suportado.
 
 https://github.com/stitchesjs/stitches/discussions/1149
 
@@ -32,16 +32,20 @@ PandaCSS é uma opção viável: https://panda-css.com/docs/migration/stitches
 
 8. https://www.youtube.com/watch?v=Bz3No1RFXWY&ab_channel=DaveGray
 
+9. Turbopack aparenta estar razoavelmente estável; porém, não é possível realizar a requisição do checkout no modo de desenvolvimento.
+
+Por algum motivo, o Turbopack é incapaz de ler os secrets presentes em **.env**.
+
 ## Considerar
 
-- [ ] Permitir adicao do item ao carrinho, na pagina especifica do produto.
+- [x] Animação ao navegar entre as páginas internas do projeto.
+- [ ] Permitir adição do item ao carrinho, na página específica do produto.
 - [ ] Mover o checkout para o submit do cart.
-- [ ] Filtro de produto (formato de select)
-- [ ] Geracao de imagens do produto com uma pessoa utilizando, via AI.
-- [ ] Transicao animada entre paginas.
+- [ ] Filtro de produto (formato de select ou botões horizontais).
+- [ ] Geração de imagens do produto com um modelo, via IA generativa.
 - [ ] Context Selector.
-- [ ] Barra fixa ao topo da pagina usada como loading, acompanhando o carregamento da mesma.
-- [ ] Migracao para App Router e Server Components.
+- [ ] Barra fixa ao topo da página, acompanhando o carregamento da mesma.
+- [ ] Migração para App Router e Server Components.
 
 ## Docs
 
