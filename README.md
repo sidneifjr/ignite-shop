@@ -36,6 +36,8 @@ PandaCSS é uma opção viável: https://panda-css.com/docs/migration/stitches
 
 Por algum motivo, o Turbopack é incapaz de ler os secrets presentes em **.env**.
 
+https://github.com/vercel/turbo/issues/3876
+
 ## Considerar
 
 - [x] Animação ao navegar entre as páginas internas do projeto.

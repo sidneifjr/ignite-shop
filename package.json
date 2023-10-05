@@ -10,20 +10,19 @@
   },
   "dependencies": {
     "@stitches/react": "^1.2.8",
-    "@types/node": "20.5.9",
-    "@types/react": "18.2.21",
-    "@types/react-dom": "18.2.7",
-    "axios": "^1.5.0",
-    "eslint": "8.48.0",
-    "eslint-config-next": "13.4.19",
-    "eslint-config-prettier": "^8.8.0",
+    "@types/node": "20.8.2",
+    "@types/react": "18.2.25",
+    "@types/react-dom": "18.2.10",
+    "axios": "^1.5.1",
+    "eslint": "8.50.0",
+    "eslint-config-next": "13.5.4",
+    "eslint-config-prettier": "^9.0.0",
     "framer-motion": "^10.16.4",
     "keen-slider": "^6.8.6",
     "next": "^13.5.4",
-    "pnpm": "^8.7.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "stripe": "^13.5.0",
+    "stripe": "^13.8.0",
     "typescript": "5.2.2"
   }
 }
