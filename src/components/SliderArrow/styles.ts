@@ -3,7 +3,8 @@ import { styled } from '@/styles'
 export const ArrowWrapper = styled('div', {
   height: '100vh',
   width: '4.5rem',
-  position: 'absolute',
+  position: 'fixed',
+  top: 0,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

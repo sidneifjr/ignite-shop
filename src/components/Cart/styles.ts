@@ -49,7 +49,7 @@ export const CartImageWrapper = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
 
-  '.flag': {
+  '.badge': {
     width: '1.5rem',
     height: '1.5rem',
     fontSize: '0.875rem',
