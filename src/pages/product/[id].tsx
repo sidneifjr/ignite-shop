@@ -117,7 +117,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }).format(priceUnit / 100),
         description: product?.description,
         defaultPriceId: price.id,
-        quantity: 0,
+        quantity: 1,
       },
     },
     revalidate: 60 * 60 * 1, // 1 hour

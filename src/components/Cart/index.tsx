@@ -55,8 +55,8 @@ export const Cart = () => {
       <CartListItem key={item.id}>
         <CartImageWrapper>
           <Image src={item.imageUrl} alt="image" width="94" height="94" />
-          {selectedProductLength !== 0 && (
-            <p className="badge">{selectedProductLength}</p>
+          {item.quantity !== 0 && item.quantity !== 1 && (
+            <p className="badge">{item.quantity}</p>
           )}
         </CartImageWrapper>
 
@@ -91,7 +91,13 @@ export const Cart = () => {
 
       <CartInfo>
         <li>
-          Quantidade: <strong>{selectedProductLength} itens</strong>
+          Quantidade:{' '}
+          <strong>
+            {selectedProductLength}{' '}
+            {selectedProductLength !== 0 && selectedProductLength !== 1
+              ? 'itens'
+              : 'item'}
+          </strong>
         </li>
 
         <li>

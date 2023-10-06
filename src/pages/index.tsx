@@ -16,15 +16,15 @@ import { HomeProps } from '@/interfaces'
 
 import { HomeContainer, Product } from '@/styles/pages/home'
 
-import { convertPriceInStringToNumber } from '@/utils'
-
 import { Arrow } from '@/components/SliderArrow'
 import { motion } from 'framer-motion'
 
+import { convertPriceInStringToNumber } from '@/utils'
 import 'keen-slider/keen-slider.min.css'
 
 export default function Home({ products }: HomeProps) {
-  const { setSelectedProduct, setTotalPrice } = useContext<any>(CartContext)
+  const { selectedProduct, setSelectedProduct, setTotalPrice } =
+    useContext<any>(CartContext)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false)
 
@@ -46,45 +46,33 @@ export default function Home({ products }: HomeProps) {
     },
   })
 
-  const handleProductData = (selectedProductIndex: number) => {
-    if (products) {
-      // @ts-ignore
-      const selectedProductData = products[selectedProductIndex]
+  const handleProductData = (selectedProductId: string) => {
+    const myProduct = products?.filter(
+      (productsItem: { id }) => productsItem.id === selectedProductId
+    )[0]
 
-      const selectedProductDataPrice = selectedProductData.price
+    console.log(myProduct)
 
-      const formattedPrice = convertPriceInStringToNumber(
-        selectedProductDataPrice
-      )
+    const myProductPrice = convertPriceInStringToNumber(myProduct.price)
 
-      // const checkIfProductAlreadyExists = products.some((productItem: any) => {
-      //   console.log('productItem.id is:', productItem.id)
-      //   console.log('selectedProductData.id is:', selectedProductData.id)
+    const checkIfProductAlreadyExists = selectedProduct.find(
+      (item: { id: string }) => item.id === selectedProductId
+    )
 
-      //   if (productItem.id !== selectedProductData.id) {
-      //     return false
-      //   }
+    console.log(checkIfProductAlreadyExists)
 
-      //   return true
-      // })
-
-      // console.log(checkIfProductAlreadyExists)
-
-      // checkIfProductAlreadyExists ? (selectedProductData.quantity += 1) : ''
-
-      setSelectedProduct((prevState: any) => [
-        ...prevState,
-        selectedProductData,
-      ])
-
-      setTotalPrice((prevState: number) => prevState + formattedPrice)
+    if (checkIfProductAlreadyExists) {
+      myProduct.quantity += 1
     }
+
+    setSelectedProduct((prevState: any) => [...prevState, myProduct])
+    setTotalPrice((prevState: number) => prevState + myProductPrice)
   }
 
   return (
     <>
       <Head>
-        <title>Ignite Shop</title>
+        <title>Home | Ignite Shop</title>
       </Head>
 
       <motion.div
@@ -94,7 +82,7 @@ export default function Home({ products }: HomeProps) {
         exit={{ opacity: 0 }}
       >
         <HomeContainer ref={sliderRef} className="keen-slider">
-          {products?.map((product: any, index: number) => {
+          {products?.map((product: any) => {
             return (
               <Product key={product.id} className="keen-slider__slide">
                 <Link href={`/product/${product.id}`} prefetch={false}>
@@ -113,7 +101,7 @@ export default function Home({ products }: HomeProps) {
                     <span>{product.price}</span>
                   </section>
 
-                  <button onClick={() => handleProductData(index)}>
+                  <button onClick={() => handleProductData(product.id)}>
                     <Image width={32} height={32} src="./bag.svg" alt="" />
                   </button>
                 </footer>
@@ -167,7 +155,7 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL',
       }).format(priceUnit / 100),
-      quantity: 0,
+      quantity: 1,
     }
   })
 
