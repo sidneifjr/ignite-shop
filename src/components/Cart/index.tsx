@@ -39,15 +39,22 @@ export const Cart = () => {
   const handleRemoveProduct = (e: MouseEvent, currentProduct: any) => {
     e.preventDefault()
 
-    const currentProductPrice = currentProduct.price
-    const formattedPrice = convertPriceInStringToNumber(currentProductPrice)
+    const currentProductPrice = convertPriceInStringToNumber(
+      currentProduct.price
+    )
 
-    const filteredProduct = selectedProduct?.filter(
+    // if (currentProduct.quantity > 1) {
+    //   currentProduct.quantity -= 1
+    // }
+
+    const filteredProductList = selectedProduct?.filter(
       (selectedProductItem: any) => selectedProductItem !== currentProduct
     )
 
-    setSelectedProduct!(filteredProduct!)
-    setTotalPrice((prevState: number) => prevState - formattedPrice)
+    // console.log(filteredProduct)
+
+    setSelectedProduct!(filteredProductList!)
+    setTotalPrice((prevState: number) => prevState - currentProductPrice)
   }
 
   const products = selectedProduct?.map((item: any) => {

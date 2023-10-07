@@ -48,10 +48,8 @@ export default function Home({ products }: HomeProps) {
 
   const handleProductData = (selectedProductId: string) => {
     const myProduct = products?.filter(
-      (productsItem: { id }) => productsItem.id === selectedProductId
+      (productsItem: { id: string }) => productsItem.id === selectedProductId
     )[0]
-
-    console.log(myProduct)
 
     const myProductPrice = convertPriceInStringToNumber(myProduct.price)
 
@@ -59,10 +57,25 @@ export default function Home({ products }: HomeProps) {
       (item: { id: string }) => item.id === selectedProductId
     )
 
-    console.log(checkIfProductAlreadyExists)
+    // console.log(checkIfProductAlreadyExists)
+    // console.log(selectedProduct)
+
+    // if (selectedProduct.length) {
+    //   const lastItemFromArray = selectedProduct(selectedProduct.length - 1)
+
+    //   // retornar todos os itens que não sejam o último do array.
+    //   const test = selectedProduct.filter((item) => item !== lastItemFromArray)
+
+    //   console.log(test)
+    // }
 
     if (checkIfProductAlreadyExists) {
       myProduct.quantity += 1
+
+      if (checkIfProductAlreadyExists !== undefined) {
+        // Verificar se o item retornado pelo find é o mesmo adicionado ao final da lista. Se sim, remover.
+        selectedProduct.pop()
+      }
     }
 
     setSelectedProduct((prevState: any) => [...prevState, myProduct])
@@ -74,6 +87,8 @@ export default function Home({ products }: HomeProps) {
       <Head>
         <title>Home | Ignite Shop</title>
       </Head>
+
+      {/* <p>{JSON.stringify(selectedProduct)}</p> */}
 
       <motion.div
         initial={{ opacity: 0 }}
