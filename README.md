@@ -10,7 +10,7 @@ Para completar esse desafio você vai precisar de realizar algumas pesquisas par
 
 Layout: https://www.figma.com/file/qmsUES7HA9SN7If869pmUb/Ignite-Shop-2.0-%E2%80%A2-Desafio-React-(Copy)?node-id=408%3A147&mode=dev
 
-## Informações importantes
+## Aprendizado
 
 1. https://app.rocketseat.com.br/h/forum/react-js/8c0249bb-2dc2-4f2f-bc6e-aaf1e647525a#0dba58b7-9dcb-4127-b5d5-6e1f6ae29ae3
 
@@ -47,7 +47,10 @@ https://github.com/vercel/turbo/issues/3876
 - [ ] Geração de imagens do produto com um modelo, via IA generativa.
 - [ ] Context Selector.
 - [ ] Barra fixa ao topo da página, acompanhando o carregamento da mesma.
-- [ ] Migração para App Router e Server Components.
+
+- ~~[ ] Migração para App Router e Server Components.~~
+
+Tal implementação exige a migração do Stitches para o PandaCSS, pois o primeiro não é suportado no App Router.
 
 ## Docs
 

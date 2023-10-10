@@ -12,7 +12,7 @@ import Stripe from 'stripe'
 
 import { useKeenSlider } from 'keen-slider/react'
 
-import { HomeProps } from '@/interfaces'
+import { HomeProps, IProduct } from '@/interfaces'
 
 import { HomeContainer, Product } from '@/styles/pages/home'
 
@@ -97,7 +97,7 @@ export default function Home({ products }: HomeProps) {
         exit={{ opacity: 0 }}
       >
         <HomeContainer ref={sliderRef} className="keen-slider">
-          {products?.map((product: any) => {
+          {products?.map((product: IProduct) => {
             return (
               <Product key={product.id} className="keen-slider__slide">
                 <Link href={`/product/${product.id}`} prefetch={false}>
@@ -179,6 +179,6 @@ export const getStaticProps: GetStaticProps = async () => {
       products,
     },
 
-    revalidate: 60 * 60 * 2, // 2 hours
+    revalidate: 600, // 10 minutos
   }
 }
