@@ -17,7 +17,6 @@ import { HomeContainer, Product } from '@/styles/pages/home'
 import { motion } from 'framer-motion'
 
 import { convertPriceInStringToNumber } from '@/utils'
-import 'keen-slider/keen-slider.min.css'
 
 export default function Home({ products }: HomeProps) {
   const { selectedProduct, setSelectedProduct, setTotalPrice } =
