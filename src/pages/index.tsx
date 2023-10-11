@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -10,13 +10,10 @@ import { CartContext } from '@/context/CartContext'
 import { stripe } from '@/lib/stripe'
 import Stripe from 'stripe'
 
-import { useKeenSlider } from 'keen-slider/react'
-
 import { HomeProps, IProduct } from '@/interfaces'
 
 import { HomeContainer, Product } from '@/styles/pages/home'
 
-import { Arrow } from '@/components/SliderArrow'
 import { motion } from 'framer-motion'
 
 import { convertPriceInStringToNumber } from '@/utils'
@@ -25,26 +22,6 @@ import 'keen-slider/keen-slider.min.css'
 export default function Home({ products }: HomeProps) {
   const { selectedProduct, setSelectedProduct, setTotalPrice } =
     useContext<any>(CartContext)
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [loaded, setLoaded] = useState(false)
-
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    initial: 0,
-    defaultAnimation: {
-      duration: 600,
-    },
-    slides: {
-      spacing: 48,
-      perView: 2.5,
-      origin: 'center',
-    },
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel)
-    },
-    created() {
-      setLoaded(true)
-    },
-  })
 
   const handleProductData = (selectedProductId: string) => {
     const myProduct = products?.filter(
@@ -96,10 +73,10 @@ export default function Home({ products }: HomeProps) {
         transition={{ duration: 0.25, ease: [0.33, 1, 0.68, 1] }}
         exit={{ opacity: 0 }}
       >
-        <HomeContainer ref={sliderRef} className="keen-slider">
+        <HomeContainer>
           {products?.map((product: IProduct) => {
             return (
-              <Product key={product.id} className="keen-slider__slide">
+              <Product key={product.id}>
                 <Link href={`/product/${product.id}`} prefetch={false}>
                   <Image
                     src={product.imageUrl}
@@ -124,25 +101,6 @@ export default function Home({ products }: HomeProps) {
             )
           })}
         </HomeContainer>
-
-        {loaded && instanceRef.current && (
-          <>
-            <Arrow
-              position="left"
-              onClick={() => instanceRef.current?.prev()}
-              disabled={currentSlide === 0}
-            />
-
-            <Arrow
-              position="right"
-              onClick={() => instanceRef.current?.next()}
-              disabled={
-                currentSlide ===
-                instanceRef.current.track.details.slides.length - 1
-              }
-            />
-          </>
-        )}
       </motion.div>
     </>
   )

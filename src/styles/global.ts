@@ -11,7 +11,30 @@ export const globalStyles = globalCss({
     backgroundColor: '$gray900',
     color: '$gray100',
     '-webkit-font-smoothing': 'antialiased',
-    overflow: 'hidden',
+    // overflow: 'hidden',
+
+    overflowY: 'scroll',
+
+    /* width */
+    '&::-webkit-scrollbar': {
+      width: '5px',
+    },
+
+    /* Track */
+    '&::-webkit-scrollbar-track': {
+      background: '#transparent',
+    },
+
+    /* Handle */
+    '&::-webkit-scrollbar-thumb': {
+      background: '$white',
+      borderRadius: '0.5rem',
+    },
+
+    /* Handle on hover */
+    '&::-webkit-scrollbar-thumb:hover': {
+      background: '#888',
+    },
   },
 
   'body, input, textarea, button': {

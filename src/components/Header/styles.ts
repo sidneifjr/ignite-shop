@@ -1,10 +1,17 @@
 import { fadeIn } from '@/keyframes'
 import { styled } from '@/styles'
 
-export const HeaderWrapper = styled('header', {
+export const HeaderElement = styled('header', {
   width: '100%',
-  maxWidth: '100rem',
-  padding: '3rem 0',
+  background: '$gray900',
+  position: 'sticky',
+  top: 0,
+  zIndex: 9,
+})
+
+export const HeaderWrapper = styled('div', {
+  maxWidth: 'calc(100% - 12rem)',
+  padding: '3rem 2rem',
   marginRight: 'auto',
   marginLeft: 'auto',
   display: 'flex',

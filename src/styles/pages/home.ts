@@ -1,34 +1,43 @@
 import { styled } from '..'
 
 export const HomeContainer = styled('main', {
-  display: 'flex',
-  width: '100%',
-  marginLeft: 'auto',
   minHeight: 656,
-  maxHeight: '70vh',
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+  marginRight: 'auto',
+  marginLeft: 'auto',
+  paddingRight: '1.25rem',
+  paddingBottom: '1.25rem',
+  paddingLeft: '1.25rem',
   flex: 1,
+  maxWidth: '100%',
+  flexWrap: 'wrap',
+  gap: '1.5rem',
 })
 
 export const Product = styled('div', {
+  flexBasis: 'calc(33.33% - 2rem)',
   background: 'linear-gradient(180deg, #7465d4 0%, #1ea483 100%)',
+  minHeight: '43.75rem',
   borderRadius: 8,
-  cursor: 'pointer',
   position: 'relative',
-
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  cursor: 'pointer',
+  overflow: 'hidden',
 
   img: {
     objectFit: 'cover',
   },
 
   a: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   footer: {
