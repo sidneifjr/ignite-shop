@@ -50,41 +50,43 @@ export default function Product({ product }: ProductProps) {
   const pageTitle = `${product?.name} | Ignite Shop`
 
   return (
-    <motion.div
-      initial={{ y: '25%', opacity: 0 }}
-      animate={{ y: '0%', opacity: 1 }}
-      transition={{ duration: 0.75, ease: [0.33, 1, 0.68, 1] }}
-      style={{ margin: '0 auto' }}
-      exit={{ y: '-25%', opacity: 0 }}
-    >
+    <>
       <Head>
         <title>{pageTitle}</title>
       </Head>
 
-      <ProductContainer>
-        <ImageContainer>
-          <Image src={product?.imageUrl} width={520} height={480} alt="" />
-        </ImageContainer>
+      <motion.div
+        initial={{ y: '25%', opacity: 0 }}
+        animate={{ y: '0%', opacity: 1 }}
+        transition={{ duration: 0.75, ease: [0.33, 1, 0.68, 1] }}
+        style={{ margin: '0 auto' }}
+        exit={{ y: '-25%', opacity: 0 }}
+      >
+        <ProductContainer>
+          <ImageContainer>
+            <Image src={product?.imageUrl} width={520} height={480} alt="" />
+          </ImageContainer>
 
-        <ProductDetails>
-          <h1>{product?.name}</h1>
-          <span>{product?.price}</span>
+          <ProductDetails>
+            <h1>{product?.name}</h1>
+            <span>{product?.price}</span>
 
-          <p>{product?.description}</p>
+            <p>{product?.description}</p>
 
-          <button
-            disabled={isCreatingCheckoutSession}
-            onClick={handleBuyProduct}
-          >
-            {isCreatingCheckoutSession ? (
-              <Image src="/loader.svg" alt="loader" width="22" height="22" />
-            ) : (
-              'Comprar agora'
-            )}
-          </button>
-        </ProductDetails>
-      </ProductContainer>
-    </motion.div>
+            <button
+              disabled={isCreatingCheckoutSession}
+              onClick={handleBuyProduct}
+            >
+              {isCreatingCheckoutSession ? (
+                <Image src="/loader.svg" alt="loader" width="22" height="22" />
+              ) : (
+                'Comprar agora'
+              )}
+            </button>
+          </ProductDetails>
+        </ProductContainer>
+      </motion.div>
+    </>
   )
 }
 
