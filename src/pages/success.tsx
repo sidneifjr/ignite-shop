@@ -25,14 +25,14 @@ export default function Success({ customerName, product }: SuccessProps) {
         {/* Evita que os crawlers indexem essa tela. */}
       </Head>
 
-      <motion.div
-        initial={{ y: '25%', opacity: 0 }}
-        animate={{ y: '0%', opacity: 1 }}
-        transition={{ duration: 0.75, ease: [0.33, 1, 0.68, 1] }}
-        style={{ margin: '0 auto' }}
-        exit={{ y: '-25%', opacity: 0 }}
-      >
-        <SuccessContainer>
+      <SuccessContainer>
+        <motion.div
+          initial={{ y: '25%', opacity: 0 }}
+          animate={{ y: '0%', opacity: 1 }}
+          transition={{ duration: 0.75, ease: [0.33, 1, 0.68, 1] }}
+          style={{ margin: '0 auto', all: 'inherit' }}
+          exit={{ y: '-25%', opacity: 0 }}
+        >
           <ImageContainer>
             <Image src={product.imageUrl} alt="" width={120} height={110} />
           </ImageContainer>
@@ -45,8 +45,8 @@ export default function Success({ customerName, product }: SuccessProps) {
           </p>
 
           <Link href="/">Voltar ao catálogo </Link>
-        </SuccessContainer>
-      </motion.div>
+        </motion.div>
+      </SuccessContainer>
     </>
   )
 }

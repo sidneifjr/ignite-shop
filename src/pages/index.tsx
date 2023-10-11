@@ -64,15 +64,14 @@ export default function Home({ products }: HomeProps) {
         <title>Home | Ignite Shop</title>
       </Head>
 
-      {/* <p>{JSON.stringify(selectedProduct)}</p> */}
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.25, ease: [0.33, 1, 0.68, 1] }}
-        exit={{ opacity: 0 }}
-      >
-        <HomeContainer>
+      <HomeContainer>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.25, ease: [0.33, 1, 0.68, 1] }}
+          exit={{ opacity: 0 }}
+          style={{ all: 'inherit' }}
+        >
           {products?.map((product: IProduct) => {
             return (
               <Product key={product.id}>
@@ -99,8 +98,8 @@ export default function Home({ products }: HomeProps) {
               </Product>
             )
           })}
-        </HomeContainer>
-      </motion.div>
+        </motion.div>
+      </HomeContainer>
     </>
   )
 }
@@ -109,8 +108,6 @@ export default function Home({ products }: HomeProps) {
 // Roda no servidor Node, provisionado pelo Next; útil quando queremos realizar uma chamada de API oculta ao usuário final.
 // Posso inserir código de autenticação, acesso a banco de dados, requisições, dados sensíveis, etc.
 export const getStaticProps: GetStaticProps = async () => {
-  // console.log(await stripe.products.list({}))
-
   const response = await stripe.products.list({
     expand: ['data.default_price'],
   })
