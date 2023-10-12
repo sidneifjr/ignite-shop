@@ -47,3 +47,5 @@ Tal implementação exige a migração do Stitches para o PandaCSS, pois o prime
 8. https://www.youtube.com/watch?v=Bz3No1RFXWY&ab_channel=DaveGray
 
 9. Turbopack aparenta estar razoavelmente estável; porém, não é possível realizar a requisição do checkout no modo de desenvolvimento. Por algum motivo, o Turbopack é incapaz de ler os secrets presentes em **.env**. (https://github.com/vercel/turbo/issues/3876)
+
+10. https://levelup.gitconnected.com/how-to-sort-imports-in-react-project-550f5ce70cbf
