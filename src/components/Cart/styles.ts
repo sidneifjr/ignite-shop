@@ -1,5 +1,6 @@
-import { fadeIn } from '@/keyframes'
 import { styled } from '@stitches/react'
+
+import { fadeIn } from '@/keyframes'
 
 export const CartWrapper = styled('aside', {
   width: '100%',
