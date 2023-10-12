@@ -1,12 +1,12 @@
-import { stripe } from '@/lib/stripe'
-import { ImageContainer, SuccessContainer } from '@/styles/pages/success'
+import { motion } from 'framer-motion'
 import { GetServerSideProps } from 'next'
+import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 import Stripe from 'stripe'
 
-import { motion } from 'framer-motion'
-import Head from 'next/head'
-import Image from 'next/image'
+import { stripe } from '@/lib/stripe'
+import { ImageContainer, SuccessContainer } from '@/styles/pages/success'
 
 interface SuccessProps {
   customerName: string

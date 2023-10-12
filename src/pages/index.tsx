@@ -1,21 +1,15 @@
-import { useContext } from 'react'
-
+import { motion } from 'framer-motion'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-
-import { CartContext } from '@/context/CartContext'
-
-import { stripe } from '@/lib/stripe'
+import { useContext } from 'react'
 import Stripe from 'stripe'
 
+import { CartContext } from '@/context/CartContext'
 import { HomeProps, IProduct } from '@/interfaces'
-
+import { stripe } from '@/lib/stripe'
 import { HomeContainer, Product } from '@/styles/pages/home'
-
-import { motion } from 'framer-motion'
-
 import { convertPriceInStringToNumber } from '@/utils'
 
 export default function Home({ products }: HomeProps) {

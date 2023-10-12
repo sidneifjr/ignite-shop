@@ -1,9 +1,7 @@
 import Image from 'next/image'
-
 import { MouseEvent, useContext } from 'react'
 
 import { CartContext } from '@/context/CartContext'
-
 import { convertPriceInStringToNumber } from '@/utils'
 
 import {

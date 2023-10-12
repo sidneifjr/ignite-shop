@@ -1,5 +1,6 @@
-import { stripe } from '@/lib/stripe'
 import { NextApiRequest, NextApiResponse } from 'next'
+
+import { stripe } from '@/lib/stripe'
 
 // Acessível na rota "/api/hello".
 export default async function handler(

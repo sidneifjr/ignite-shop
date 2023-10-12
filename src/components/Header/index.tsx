@@ -1,9 +1,9 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { MouseEvent, useContext } from 'react'
 
 import { CartContext } from '@/context/CartContext'
 
-import Link from 'next/link'
 import { HeaderElement, HeaderWrapper } from './styles'
 
 export const Header = () => {
