@@ -10,8 +10,7 @@ export const ProductContainer = styled('main', {
 export const ImageContainer = styled('div', {
   minWidth: 676,
   height: '656px',
-  background: 'linear-gradient(rgb(30, 164, 131) 0%, rgb(116, 101, 212) 100%)',
-  borderRadius: 8,
+  border: 'solid 1px $green500',
   padding: '0.25rem',
 
   display: 'flex',

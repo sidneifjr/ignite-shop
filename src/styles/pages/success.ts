@@ -41,7 +41,7 @@ export const ImageContainer = styled('div', {
   width: '100%',
   maxWidth: '8.75rem',
   height: '8.75rem',
-  background: 'linear-gradient(180deg, #7465d4 0%, #1ea483 100%)',
+  border: 'solid 1px $green500',
   borderRadius: '50%',
   marginTop: '4rem',
 

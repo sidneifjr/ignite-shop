@@ -44,7 +44,7 @@ export const CartImageWrapper = styled('div', {
   width: '6.37138rem',
   height: '5.8125rem',
   borderRadius: '0.5rem',
-  background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
+  border: 'solid 1px $green500',
   position: 'relative',
   display: 'flex',
   justifyContent: 'center',
