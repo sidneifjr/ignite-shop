@@ -15,6 +15,17 @@ export type IProducts = {
   map: any
 }
 
+export interface ProductProps {
+  product: {
+    id: string
+    name: string
+    imageUrl: string
+    price: string
+    description: string
+    defaultPriceId: string
+  }
+}
+
 export interface HomeProps {
   defaultPriceId: any
   amount?: number
@@ -31,6 +42,8 @@ export type CartContextProps = {
   setIsOpen: Dispatch<SetStateAction<boolean>>
   totalPrice: number
   setTotalPrice: Dispatch<SetStateAction<number>>
+  isCreatingCheckoutSession: boolean
+  setIsCreatingCheckoutSession: Dispatch<SetStateAction<any>>
 }
 
 export interface ArrowProps {
