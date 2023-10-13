@@ -3,9 +3,12 @@ import { motion } from 'framer-motion'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useContext } from 'react'
 import Stripe from 'stripe'
 
+import CheckoutBtn from '@/components/CheckoutBtn'
+import { CartContext } from '@/context/CartContext'
+import { ProductProps } from '@/interfaces'
 import { stripe } from '@/lib/stripe'
 import {
   ImageContainer,
@@ -13,20 +16,10 @@ import {
   ProductDetails,
 } from '@/styles/pages/product'
 
-interface ProductProps {
-  product: {
-    id: string
-    name: string
-    imageUrl: string
-    price: string
-    description: string
-    defaultPriceId: string
-  }
-}
-
 export default function Product({ product }: ProductProps) {
-  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
-    useState(false)
+  const { setIsCreatingCheckoutSession } = useContext(CartContext)
+
+  const pageTitle = `${product?.name} | Ignite Shop`
 
   async function handleBuyProduct() {
     try {
@@ -40,14 +33,10 @@ export default function Product({ product }: ProductProps) {
       window.location.href = checkoutUrl
     } catch (err) {
       // Conectar com uma ferramenta de observabilidade (Datadog / Sentry).
-
       setIsCreatingCheckoutSession(false)
-
       console.error('Falha ao redirecionar ao checkout!')
     }
   }
-
-  const pageTitle = `${product?.name} | Ignite Shop`
 
   return (
     <>
@@ -73,16 +62,7 @@ export default function Product({ product }: ProductProps) {
 
             <p>{product?.description}</p>
 
-            <button
-              disabled={isCreatingCheckoutSession}
-              onClick={handleBuyProduct}
-            >
-              {isCreatingCheckoutSession ? (
-                <Image src="/loader.svg" alt="loader" width="22" height="22" />
-              ) : (
-                'Comprar agora'
-              )}
-            </button>
+            <CheckoutBtn label="Comprar agora" onClick={handleBuyProduct} />
           </ProductDetails>
         </ProductContainer>
       </motion.div>

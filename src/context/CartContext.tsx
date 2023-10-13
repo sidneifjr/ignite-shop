@@ -8,6 +8,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [selectedProduct, setSelectedProduct] = useState<HomeProps[]>([])
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [totalPrice, setTotalPrice] = useState<number>(0)
+  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
+    useState(false)
 
   return (
     <CartContext.Provider
@@ -18,6 +20,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setIsOpen,
         totalPrice,
         setTotalPrice,
+        isCreatingCheckoutSession,
+        setIsCreatingCheckoutSession,
       }}
     >
       {children}
