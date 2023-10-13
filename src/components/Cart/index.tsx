@@ -4,13 +4,13 @@ import { MouseEvent, useContext } from 'react'
 import { CartContext } from '@/context/CartContext'
 import { convertPriceInStringToNumber } from '@/utils'
 
+import CheckoutBtn from '../CheckoutBtn'
 import {
   CartImageWrapper,
   CartInfo,
   CartList,
   CartListItem,
   CartListItemContent,
-  CartSubmitBtn,
   CartTitle,
   CartWrapper,
   CloseCartBtn,
@@ -116,7 +116,10 @@ export const Cart = () => {
         </li>
       </CartInfo>
 
-      <CartSubmitBtn>Finalizar compra</CartSubmitBtn>
+      <CheckoutBtn
+        label="Finalizar compra"
+        //  onClick={handleBuyProduct}
+      />
     </CartWrapper>
   )
 }
