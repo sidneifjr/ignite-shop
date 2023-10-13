@@ -44,7 +44,9 @@ export type CartContextProps = {
   setTotalPrice: Dispatch<SetStateAction<number>>
   isCreatingCheckoutSession: boolean
   setIsCreatingCheckoutSession: Dispatch<SetStateAction<any>>
-  handleBuyProduct: (defaultPriceId: string) => void
+  handleCheckoutSession: (defaultPriceId: string) => void
+  addProductToCart: (item: any, products: any) => void
+  removeProductFromCart: (e: any, item: any) => void
 }
 
 export interface CheckoutBtnProps {

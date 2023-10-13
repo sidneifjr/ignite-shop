@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { MouseEvent, useContext } from 'react'
 
 import { CartContext } from '@/context/CartContext'
-import { convertPriceInStringToNumber } from '@/utils'
 
 import CheckoutBtn from '../CheckoutBtn'
 import {
@@ -20,11 +19,11 @@ import {
 export const Cart = () => {
   const {
     selectedProduct,
-    setSelectedProduct,
     totalPrice,
-    setTotalPrice,
     isOpen,
     setIsOpen,
+    handleCheckoutSession,
+    removeProductFromCart,
   } = useContext(CartContext)
 
   const selectedProductLength = selectedProduct?.length
@@ -32,27 +31,6 @@ export const Cart = () => {
   const closeHandler = (e: MouseEvent) => {
     e.preventDefault()
     setIsOpen((state) => !state)
-  }
-
-  const handleRemoveProduct = (e: MouseEvent, currentProduct: any) => {
-    e.preventDefault()
-
-    const currentProductPrice = convertPriceInStringToNumber(
-      currentProduct.price
-    )
-
-    // if (currentProduct.amount > 1) {
-    //   currentProduct.amount -= 1
-    // }
-
-    const filteredProductList = selectedProduct?.filter(
-      (selectedProductItem: any) => selectedProductItem !== currentProduct
-    )
-
-    // console.log(filteredProduct)
-
-    setSelectedProduct!(filteredProductList!)
-    setTotalPrice((prevState: number) => prevState - currentProductPrice)
   }
 
   const products = selectedProduct?.map((item: any) => {
@@ -69,7 +47,7 @@ export const Cart = () => {
           <span>{item.name}</span>
           <strong>{item.price}</strong>
 
-          <a href="#" onClick={(e) => handleRemoveProduct(e, item)}>
+          <a href="#" onClick={(e) => removeProductFromCart(e, item)}>
             Remover
           </a>
         </CartListItemContent>
@@ -118,7 +96,7 @@ export const Cart = () => {
 
       <CheckoutBtn
         label="Finalizar compra"
-        //  onClick={handleBuyProduct}
+        onClick={() => handleCheckoutSession}
       />
     </CartWrapper>
   )

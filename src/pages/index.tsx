@@ -10,47 +10,9 @@ import { CartContext } from '@/context/CartContext'
 import { HomeProps, IProduct } from '@/interfaces'
 import { stripe } from '@/lib/stripe'
 import { HomeContainer, Product } from '@/styles/pages/home'
-import { convertPriceInStringToNumber } from '@/utils'
 
 export default function Home({ products }: HomeProps) {
-  const { selectedProduct, setSelectedProduct, setTotalPrice } =
-    useContext<any>(CartContext)
-
-  const handleProductData = (selectedProductId: string) => {
-    const myProduct = products?.filter(
-      (productsItem: { id: string }) => productsItem.id === selectedProductId
-    )[0]
-
-    const myProductPrice = convertPriceInStringToNumber(myProduct.price)
-
-    const checkIfProductAlreadyExists = selectedProduct.find(
-      (item: { id: string }) => item.id === selectedProductId
-    )
-
-    // console.log(checkIfProductAlreadyExists)
-    // console.log(selectedProduct)
-
-    // if (selectedProduct.length) {
-    //   const lastItemFromArray = selectedProduct(selectedProduct.length - 1)
-
-    //   // retornar todos os itens que não sejam o último do array.
-    //   const test = selectedProduct.filter((item) => item !== lastItemFromArray)
-
-    //   console.log(test)
-    // }
-
-    if (checkIfProductAlreadyExists) {
-      myProduct.amount += 1
-
-      if (checkIfProductAlreadyExists !== undefined) {
-        // Verificar se o item retornado pelo find é o mesmo adicionado ao final da lista. Se sim, remover.
-        selectedProduct.pop()
-      }
-    }
-
-    setSelectedProduct((prevState: any) => [...prevState, myProduct])
-    setTotalPrice((prevState: number) => prevState + myProductPrice)
-  }
+  const { addProductToCart } = useContext<any>(CartContext)
 
   return (
     <>
@@ -85,7 +47,9 @@ export default function Home({ products }: HomeProps) {
                     <span>{product.price}</span>
                   </section>
 
-                  <button onClick={() => handleProductData(product.id)}>
+                  <button
+                    onClick={() => addProductToCart(product.id, products)}
+                  >
                     <Image width={32} height={32} src="./bag.svg" alt="" />
                   </button>
                 </footer>

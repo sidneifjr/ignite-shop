@@ -16,7 +16,7 @@ import {
 } from '@/styles/pages/product'
 
 export default function Product({ product }: ProductProps) {
-  const { handleBuyProduct } = useContext(CartContext)
+  const { handleCheckoutSession } = useContext(CartContext)
 
   const pageTitle = `${product?.name} | Ignite Shop`
 
@@ -46,7 +46,7 @@ export default function Product({ product }: ProductProps) {
 
             <CheckoutBtn
               label="Comprar agora"
-              onClick={() => handleBuyProduct(product?.defaultPriceId)}
+              onClick={() => handleCheckoutSession(product?.defaultPriceId)}
             />
           </ProductDetails>
         </ProductContainer>
