@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { motion } from 'framer-motion'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -17,26 +16,9 @@ import {
 } from '@/styles/pages/product'
 
 export default function Product({ product }: ProductProps) {
-  const { setIsCreatingCheckoutSession } = useContext(CartContext)
+  const { handleBuyProduct } = useContext(CartContext)
 
   const pageTitle = `${product?.name} | Ignite Shop`
-
-  async function handleBuyProduct() {
-    try {
-      setIsCreatingCheckoutSession(true)
-
-      const response = await axios.post('/api/checkout', {
-        priceId: product?.defaultPriceId,
-      })
-
-      const { checkoutUrl } = response.data
-      window.location.href = checkoutUrl
-    } catch (err) {
-      // Conectar com uma ferramenta de observabilidade (Datadog / Sentry).
-      setIsCreatingCheckoutSession(false)
-      console.error('Falha ao redirecionar ao checkout!')
-    }
-  }
 
   return (
     <>
@@ -62,7 +44,10 @@ export default function Product({ product }: ProductProps) {
 
             <p>{product?.description}</p>
 
-            <CheckoutBtn label="Comprar agora" onClick={handleBuyProduct} />
+            <CheckoutBtn
+              label="Comprar agora"
+              onClick={() => handleBuyProduct(product?.defaultPriceId)}
+            />
           </ProductDetails>
         </ProductContainer>
       </motion.div>
