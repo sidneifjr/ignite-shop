@@ -31,7 +31,7 @@ export const Header = () => {
         <button onClick={(e) => openHandler(e)}>
           <Image width={24} height={24} src="./bag.svg" alt="" />
 
-          {selectedProductLength && <span>{selectedProductLength}</span>}
+          {selectedProductLength !== 0 && <span>{selectedProductLength}</span>}
         </button>
       </HeaderWrapper>
     </HeaderElement>
