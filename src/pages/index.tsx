@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -6,6 +5,7 @@ import Link from 'next/link'
 import { useContext } from 'react'
 import Stripe from 'stripe'
 
+import { MotionWrapper } from '@/components/MotionWrapper'
 import { CartContext } from '@/context/CartContext'
 import { HomeProps, IProduct } from '@/interfaces'
 import { stripe } from '@/lib/stripe'
@@ -21,7 +21,7 @@ export default function Home({ products }: HomeProps) {
       </Head>
 
       <HomeContainer>
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.25, ease: [0.33, 1, 0.68, 1] }}
@@ -56,7 +56,7 @@ export default function Home({ products }: HomeProps) {
               </Product>
             )
           })}
-        </motion.div>
+        </MotionWrapper>
       </HomeContainer>
     </>
   )

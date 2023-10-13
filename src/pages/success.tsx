@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Stripe from 'stripe'
 
+import { MotionWrapper } from '@/components/MotionWrapper'
 import { stripe } from '@/lib/stripe'
 import { ImageContainer, SuccessContainer } from '@/styles/pages/success'
 
@@ -26,7 +26,7 @@ export default function Success({ customerName, product }: SuccessProps) {
       </Head>
 
       <SuccessContainer>
-        <motion.div
+        <MotionWrapper
           initial={{ y: '25%', opacity: 0 }}
           animate={{ y: '0%', opacity: 1 }}
           transition={{ duration: 0.75, ease: [0.33, 1, 0.68, 1] }}
@@ -45,7 +45,7 @@ export default function Success({ customerName, product }: SuccessProps) {
           </p>
 
           <Link href="/">Voltar ao catálogo </Link>
-        </motion.div>
+        </MotionWrapper>
       </SuccessContainer>
     </>
   )
