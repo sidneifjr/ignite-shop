@@ -2,13 +2,9 @@ import Image from 'next/image'
 import { useContext } from 'react'
 
 import { CartContext } from '@/context/CartContext'
+import { CheckoutBtnProps } from '@/interfaces'
 
 import { Button } from './styles'
-
-interface CheckoutBtnProps {
-  onClick?: () => void
-  label: string
-}
 
 export default function CheckoutBtn({ onClick, label }: CheckoutBtnProps) {
   const { isCreatingCheckoutSession } = useContext(CartContext)

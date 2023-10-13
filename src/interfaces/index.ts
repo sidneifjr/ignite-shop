@@ -44,10 +44,10 @@ export type CartContextProps = {
   setTotalPrice: Dispatch<SetStateAction<number>>
   isCreatingCheckoutSession: boolean
   setIsCreatingCheckoutSession: Dispatch<SetStateAction<any>>
+  handleBuyProduct: (defaultPriceId: string) => void
 }
 
-export interface ArrowProps {
-  position: 'left' | 'right'
-  disabled: boolean
-  onClick: () => void
+export interface CheckoutBtnProps {
+  onClick?: (props: any) => void
+  label: string
 }
