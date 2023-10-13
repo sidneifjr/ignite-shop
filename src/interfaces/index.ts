@@ -5,18 +5,19 @@ export type IProduct = {
   name: string
   imageUrl: string
   price: string
-  quantity?: number
+  amount?: number
 }
 
 export type IProducts = {
   filter: any
-  quantity: number
+  amount: number
   products?: IProduct[]
   map: any
 }
 
 export interface HomeProps {
-  quantity?: number
+  defaultPriceId: any
+  amount?: number
   products?: IProducts
   length: number
   filter: any

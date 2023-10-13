@@ -41,8 +41,8 @@ export const Cart = () => {
       currentProduct.price
     )
 
-    // if (currentProduct.quantity > 1) {
-    //   currentProduct.quantity -= 1
+    // if (currentProduct.amount > 1) {
+    //   currentProduct.amount -= 1
     // }
 
     const filteredProductList = selectedProduct?.filter(
@@ -60,8 +60,8 @@ export const Cart = () => {
       <CartListItem key={item.id}>
         <CartImageWrapper>
           <Image src={item.imageUrl} alt="image" width="94" height="94" />
-          {item.quantity !== 0 && item.quantity !== 1 && (
-            <p className="badge">{item.quantity}</p>
+          {item.amount !== 0 && item.amount !== 1 && (
+            <p className="badge">{item.amount}</p>
           )}
         </CartImageWrapper>
 

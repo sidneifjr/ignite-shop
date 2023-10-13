@@ -40,7 +40,7 @@ export default function Home({ products }: HomeProps) {
     // }
 
     if (checkIfProductAlreadyExists) {
-      myProduct.quantity += 1
+      myProduct.amount += 1
 
       if (checkIfProductAlreadyExists !== undefined) {
         // Verificar se o item retornado pelo find é o mesmo adicionado ao final da lista. Se sim, remover.
@@ -118,7 +118,7 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL',
       }).format(priceUnit / 100),
-      quantity: 1,
+      amount: 1,
     }
   })
 
