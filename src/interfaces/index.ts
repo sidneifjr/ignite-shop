@@ -33,6 +33,8 @@ export interface HomeProps {
   length: number
   filter: any
   map: any
+  productsInMerchandise: any
+  productsInClothing: any
 }
 
 export type CartContextProps = {
@@ -46,7 +48,7 @@ export type CartContextProps = {
   setIsCreatingCheckoutSession: Dispatch<SetStateAction<any>>
   handleCheckoutSession: (defaultPriceId: string) => void
   addProductToCart: (item: any, products: any) => void
-  removeProductFromCart: (e: any, item: any) => void
+  removeProductFromCart: (item: any) => void
 }
 
 export interface CheckoutBtnProps {

@@ -11,8 +11,14 @@ import { HomeProps, IProduct } from '@/interfaces'
 import { stripe } from '@/lib/stripe'
 import { HomeContainer, Product } from '@/styles/pages/home'
 
-export default function Home({ products }: HomeProps) {
+export default function Home({
+  products,
+} // productsInMerchandise,
+// productsInClothing,
+: HomeProps) {
   const { addProductToCart } = useContext<any>(CartContext)
+  // console.log(productsInMerchandise)
+  // console.log(productsInClothing)
 
   return (
     <>
@@ -66,6 +72,23 @@ export default function Home({ products }: HomeProps) {
 // Roda no servidor Node, provisionado pelo Next; útil quando queremos realizar uma chamada de API oculta ao usuário final.
 // Posso inserir código de autenticação, acesso a banco de dados, requisições, dados sensíveis, etc.
 export const getStaticProps: GetStaticProps = async () => {
+  // const productsPerCategory = categories.map(async (productCategoriesItem) => {
+  //   return await stripe.products.search({
+  //     query: `"metadata['category']:'${productCategoriesItem}'"`,
+  //   })
+  // })
+
+  // const productsInMerchandise = await stripe.products.search({
+  //   query: "metadata['category']:'merchandise'",
+  // })
+
+  // const productsInClothing = await stripe.products.search({
+  //   query: "metadata['category']:'clothing'",
+  // })
+
+  // console.log('productsInMerchandise is:', productsInMerchandise.data)
+  // console.log('productsInClothing is:', productsInClothing.data)
+
   const response = await stripe.products.list({
     expand: ['data.default_price'],
   })
@@ -89,6 +112,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       products,
+      // productsInMerchandise,
+      // productsInClothing,
     },
 
     revalidate: 600, // 10 minutos

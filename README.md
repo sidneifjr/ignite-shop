@@ -36,6 +36,8 @@ Tal implementação exige a migração do Stitches para o PandaCSS, pois o prime
 
 4. Devido à introdução do **Streaming** e **Server Components** com o React 18, o Stitches não é mais ativamente suportado. (https://github.com/stitchesjs/stitches/discussions/1149);
 
+- Styled Components é compatível: https://styled-components.com/
+
 - PandaCSS é uma opção viável: https://panda-css.com/docs/migration/stitches
 
 5. https://stackoverflow.com/questions/52423842/what-is-not-assignable-to-parameter-of-type-never-error-in-typescript
@@ -51,3 +53,5 @@ Tal implementação exige a migração do Stitches para o PandaCSS, pois o prime
 10. https://levelup.gitconnected.com/how-to-sort-imports-in-react-project-550f5ce70cbf
 
 11. https://github.com/vercel/next.js/discussions/13448
+
+12. Remoção de background em imagens, via AI (https://hotpot.ai/).

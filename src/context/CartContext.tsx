@@ -36,41 +36,44 @@ export function CartProvider({ children }: { children: ReactNode }) {
     )[0]
 
     const myProductPrice = convertPriceInStringToNumber(myProduct.price)
-
-    const checkIfProductAlreadyExists = selectedProduct.find(
-      (item: any) => item.id === selectedProductId
-    )
-
-    if (checkIfProductAlreadyExists) {
-      myProduct.amount += 1
-
-      if (checkIfProductAlreadyExists !== undefined) {
-        // Verificar se o item retornado pelo find é o mesmo adicionado ao final da lista. Se sim, remover.
-        selectedProduct.pop()
-      }
-    }
+    increaseProductAmount(selectedProductId, myProduct)
 
     setSelectedProduct((prevState: any) => [...prevState, myProduct])
     setTotalPrice((prevState: number) => prevState + myProductPrice)
   }
 
-  const removeProductFromCart = (e: MouseEvent, currentProduct: any) => {
-    e.preventDefault()
-
+  const removeProductFromCart = (currentProduct: any) => {
     const currentProductPrice = convertPriceInStringToNumber(
       currentProduct.price
     )
-
-    // if (currentProduct.amount > 1) {
-    //   currentProduct.amount -= 1
-    // }
 
     const filteredProductList = selectedProduct?.filter(
       (selectedProductItem: any) => selectedProductItem !== currentProduct
     )
 
+    if (currentProduct.amount > 1) {
+      currentProduct.amount -= 1
+    }
+
     setSelectedProduct!(filteredProductList!)
     setTotalPrice((prevState: number) => prevState - currentProductPrice)
+  }
+
+  const increaseProductAmount = (
+    productId: string,
+    filteredProduct: { amount: number }
+  ) => {
+    const checkIfProductAlreadyExists = selectedProduct.find(
+      (item: any) => item.id === productId
+    )
+
+    if (checkIfProductAlreadyExists) {
+      filteredProduct.amount += 1
+
+      if (checkIfProductAlreadyExists !== undefined) {
+        selectedProduct.pop() // Verificar se o item retornado pelo find é o mesmo adicionado ao final da lista. Se sim, remover.
+      }
+    }
   }
 
   return (
@@ -85,8 +88,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         isCreatingCheckoutSession,
         setIsCreatingCheckoutSession,
         handleCheckoutSession,
-        removeProductFromCart,
         addProductToCart,
+        removeProductFromCart,
       }}
     >
       {children}

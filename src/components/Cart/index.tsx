@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { MouseEvent, useContext } from 'react'
+import { useContext } from 'react'
 
 import { CartContext } from '@/context/CartContext'
 
@@ -47,7 +47,13 @@ export const Cart = () => {
           <span>{item.name}</span>
           <strong>{item.price}</strong>
 
-          <a href="#" onClick={(e) => removeProductFromCart(e, item)}>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              removeProductFromCart(item)
+            }}
+          >
             Remover
           </a>
         </CartListItemContent>
