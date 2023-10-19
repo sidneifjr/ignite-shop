@@ -15,6 +15,7 @@ Layout: https://www.figma.com/file/qmsUES7HA9SN7If869pmUb/Ignite-Shop-2.0-%E2%80
 ## Considerar
 
 - [x] Animação ao navegar entre as páginas internas do projeto.
+- [x] Progressive Wep App (PWA).
 - [ ] Adição do item ao carrinho, na página específica do produto.
 - [ ] Mover o checkout para o submit do cart.
 - [ ] Filtro de produto (formato de select ou botões horizontais).
@@ -55,3 +56,7 @@ Tal implementação exige a migração do Stitches para o PandaCSS, pois o prime
 11. https://github.com/vercel/next.js/discussions/13448
 
 12. Remoção de background em imagens, via AI (https://hotpot.ai/).
+
+13. PWA: https://github.com/shadowwalker/next-pwa e Manifest Generator: https://www.simicart.com/manifest-generator.html/
+
+14. Erros ao buildar (com PWA): https://github.com/vercel/next.js/issues/40155#issuecomment-1235164653
