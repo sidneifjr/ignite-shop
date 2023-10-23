@@ -18,22 +18,28 @@ import {
 
 export const Cart = () => {
   const {
-    selectedProduct,
+    cart,
     totalPrice,
     isOpen,
     setIsOpen,
     handleCheckoutSession,
     removeProductFromCart,
+    // getTotalPrice,
   } = useContext(CartContext)
 
-  const selectedProductLength = selectedProduct?.length
+  // useEffect(() => {
+  //   console.log('cart is:', cart)
+  //   console.log('cart[0].id is:', cart[0]?.id)
+  // }, [cart])
+
+  const cartLength = cart?.length
 
   const closeHandler = (e: MouseEvent) => {
     e.preventDefault()
     setIsOpen((state) => !state)
   }
 
-  const products = selectedProduct?.map((item: any) => {
+  const products = cart?.map((item: any) => {
     return (
       <CartListItem key={item.id}>
         <CartImageWrapper>
@@ -69,7 +75,7 @@ export const Cart = () => {
 
       <CartTitle>Sacola de compras</CartTitle>
 
-      {selectedProductLength !== 0 ? (
+      {cartLength !== 0 ? (
         <CartList>{products}</CartList>
       ) : (
         <EmptyCartWrapper>
@@ -82,10 +88,8 @@ export const Cart = () => {
         <li>
           Quantidade:{' '}
           <strong>
-            {selectedProductLength}{' '}
-            {selectedProductLength !== 0 && selectedProductLength !== 1
-              ? 'itens'
-              : 'item'}
+            {cartLength}{' '}
+            {cartLength !== 0 && cartLength !== 1 ? 'itens' : 'item'}
           </strong>
         </li>
 
@@ -102,7 +106,7 @@ export const Cart = () => {
 
       <CheckoutBtn
         label="Finalizar compra"
-        onClick={() => handleCheckoutSession}
+        onClick={() => handleCheckoutSession(cart[0].id)}
       />
     </CartWrapper>
   )

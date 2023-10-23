@@ -27,6 +27,7 @@ export interface ProductProps {
 }
 
 export interface HomeProps {
+  id: any
   defaultPriceId: any
   amount?: number
   products?: IProducts
@@ -38,8 +39,8 @@ export interface HomeProps {
 }
 
 export type CartContextProps = {
-  selectedProduct?: HomeProps[]
-  setSelectedProduct?: Dispatch<SetStateAction<HomeProps[]>>
+  cart?: HomeProps[]
+  setCart?: Dispatch<SetStateAction<HomeProps[]>>
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>
   totalPrice: number

@@ -1,19 +1,22 @@
+// eslint-disable-next-line simple-import-sort/imports
+import { ReactNode, createContext, useState } from 'react'
+
 import axios from 'axios'
-import { createContext, ReactNode, useState } from 'react'
 
 import { CartContextProps, HomeProps } from '@/interfaces'
-import { convertPriceInStringToNumber } from '@/utils'
 
 export const CartContext = createContext({} as CartContextProps)
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [selectedProduct, setSelectedProduct] = useState<HomeProps[]>([])
+  const [cart, setCart] = useState<HomeProps[]>([])
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [totalPrice, setTotalPrice] = useState<number>(0)
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
     useState(false)
 
   async function handleCheckoutSession(defaultPriceId: string) {
+    console.log('this is the defaultPriceId:', defaultPriceId)
+
     try {
       setIsCreatingCheckoutSession(true)
 
@@ -30,57 +33,46 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const addProductToCart = (selectedProductId: string, products: any) => {
-    const myProduct = products?.filter(
-      (productsItem: { id: string }) => productsItem.id === selectedProductId
-    )[0]
-
-    const myProductPrice = convertPriceInStringToNumber(myProduct.price)
-    increaseProductAmount(selectedProductId, myProduct)
-
-    setSelectedProduct((prevState: any) => [...prevState, myProduct])
-    setTotalPrice((prevState: number) => prevState + myProductPrice)
-  }
-
-  const removeProductFromCart = (currentProduct: any) => {
-    const currentProductPrice = convertPriceInStringToNumber(
-      currentProduct.price
-    )
-
-    const filteredProductList = selectedProduct?.filter(
-      (selectedProductItem: any) => selectedProductItem !== currentProduct
-    )
-
-    if (currentProduct.amount > 1) {
-      currentProduct.amount -= 1
-    }
-
-    setSelectedProduct!(filteredProductList!)
-    setTotalPrice((prevState: number) => prevState - currentProductPrice)
-  }
-
-  const increaseProductAmount = (
-    productId: string,
-    filteredProduct: { amount: number }
-  ) => {
-    const checkIfProductAlreadyExists = selectedProduct.find(
-      (item: any) => item.id === productId
-    )
-
-    if (checkIfProductAlreadyExists) {
-      filteredProduct.amount += 1
-
-      if (checkIfProductAlreadyExists !== undefined) {
-        selectedProduct.pop() // Verificar se o item retornado pelo find é o mesmo adicionado ao final da lista. Se sim, remover.
-      }
+  const addProductToCart = (product: HomeProps) => {
+    const existingProduct = cart.find((item) => item.id === product.id)
+    if (existingProduct) {
+      // If the product is already in the cart, increase its amount
+      setCart(
+        cart.map((item) =>
+          item.id === product.id ? { ...item, amount: item.amount + 1 } : item
+        )
+      )
+    } else {
+      // If it's a new product, add it to the cart with a amount of 1
+      setCart([...cart, { ...product, amount: 1 }])
     }
   }
+
+  const removeProductFromCart = (product: { amount: number; id: any }) => {
+    if (product.amount > 1) {
+      // If the product's amount is greater than 1, decrease its amount
+      setCart(
+        cart.map((item) =>
+          item.id === product.id ? { ...item, amount: item.amount - 1 } : item
+        )
+      )
+    } else {
+      // If the amount is 1, remove the product from the cart
+      const updatedCart = cart.filter((item) => item.id !== product.id)
+      setCart(updatedCart)
+    }
+  }
+
+  // const getTotalPrice = () => {
+  //   // console.log('current value of cart is:', cart)
+  //   return cart.reduce((total, item) => (total + item.price * item.amount, 0))
+  // }
 
   return (
     <CartContext.Provider
       value={{
-        selectedProduct,
-        setSelectedProduct,
+        cart,
+        setCart,
         isOpen,
         setIsOpen,
         totalPrice,
@@ -90,6 +82,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         handleCheckoutSession,
         addProductToCart,
         removeProductFromCart,
+        // getTotalPrice,
       }}
     >
       {children}

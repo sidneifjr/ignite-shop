@@ -7,9 +7,9 @@ import { CartContext } from '@/context/CartContext'
 import { HeaderElement, HeaderWrapper } from './styles'
 
 export const Header = () => {
-  const { selectedProduct, isOpen, setIsOpen } = useContext(CartContext)
+  const { cart, isOpen, setIsOpen } = useContext(CartContext)
 
-  const selectedProductLength = selectedProduct?.length
+  const cartLength = cart?.length
 
   const openHandler = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -31,7 +31,7 @@ export const Header = () => {
         <button onClick={(e) => openHandler(e)}>
           <Image width={24} height={24} src="./bag.svg" alt="" />
 
-          {selectedProductLength !== 0 && <span>{selectedProductLength}</span>}
+          {cartLength !== 0 && <span>{cartLength}</span>}
         </button>
       </HeaderWrapper>
     </HeaderElement>
