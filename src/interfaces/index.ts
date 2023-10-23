@@ -39,7 +39,7 @@ export interface HomeProps {
 }
 
 export type CartContextProps = {
-  cart?: HomeProps[]
+  cart: HomeProps[]
   setCart?: Dispatch<SetStateAction<HomeProps[]>>
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>

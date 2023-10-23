@@ -39,6 +39,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       // If the product is already in the cart, increase its amount
       setCart(
         cart.map((item) =>
+          // @ts-ignore
           item.id === product.id ? { ...item, amount: item.amount + 1 } : item
         )
       )
@@ -53,6 +54,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       // If the product's amount is greater than 1, decrease its amount
       setCart(
         cart.map((item) =>
+          // @ts-ignore
           item.id === product.id ? { ...item, amount: item.amount - 1 } : item
         )
       )
