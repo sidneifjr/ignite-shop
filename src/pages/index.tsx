@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
+      defaultPriceId: price.id,
       price: new Intl.NumberFormat('pt-br', {
         style: 'currency',
         currency: 'BRL',
@@ -65,8 +66,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home({
   products, // productsInMerchandise,
-  // productsInClothing,
-}: HomeProps) {
+} // productsInClothing,
+: HomeProps) {
   const { addProductToCart } = useContext<any>(CartContext)
   // console.log(productsInMerchandise)
   // console.log(productsInClothing)

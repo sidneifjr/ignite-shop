@@ -27,10 +27,7 @@ export const Cart = () => {
     // getTotalPrice,
   } = useContext(CartContext)
 
-  // useEffect(() => {
-  //   console.log('cart is:', cart)
-  //   console.log('cart[0].id is:', cart[0]?.id)
-  // }, [cart])
+  console.log(cart)
 
   const cartLength = cart?.length
 
@@ -66,6 +63,12 @@ export const Cart = () => {
       </CartListItem>
     )
   })
+
+  // const cartDefaultIds = cart.map((item) => {
+  //   return item.defaultPriceId
+  // })
+
+  // console.log(cartDefaultIds)
 
   return (
     <CartWrapper data-visible={isOpen ? true : false}>
@@ -106,7 +109,8 @@ export const Cart = () => {
 
       <CheckoutBtn
         label="Finalizar compra"
-        onClick={() => handleCheckoutSession(cart[0].id)}
+        onClick={() => handleCheckoutSession(cart[0].defaultPriceId)}
+        // onClick={() => handleCheckoutSession(cartDefaultIds)}
       />
     </CartWrapper>
   )
