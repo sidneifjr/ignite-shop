@@ -15,32 +15,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     useState(false)
 
   async function handleCheckoutSession(defaultPriceId: string | string[]) {
-    console.log('this is the defaultPriceId:', defaultPriceId)
-
-    // const defaultPriceIds = defaultPriceId.forEach(async (item) => {
-    //   await axios.post('/api/checkout', {
-    //     priceId: item,
-    //   })
-    // })
-
-    // console.log(defaultPriceIds)
-
-    // console.log(response)
-
-    // const defaultPriceIds = defaultPriceId.forEach(async (item) => {
-    //   await axios.post('/api/checkout', {
-    //     priceId: item,
-    //   })
-    // })
-
-    // console.log(defaultPriceIds)
-
-    // const response = await axios.post('/api/checkout', {
-    //   priceId: defaultPriceIds.map((item) => {
-    //     return item
-    //   }),
-    // })
-
     try {
       setIsCreatingCheckoutSession(true)
 

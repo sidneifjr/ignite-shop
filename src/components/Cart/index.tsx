@@ -27,9 +27,13 @@ export const Cart = () => {
     // getTotalPrice,
   } = useContext(CartContext)
 
-  console.log(cart)
-
   const cartLength = cart?.length
+
+  const cartDefaultIds = cart.map((item) => {
+    return item.defaultPriceId
+  })
+
+  const quantityText = cartLength !== 0 && cartLength !== 1 ? 'itens' : 'item'
 
   const closeHandler = (e: MouseEvent) => {
     e.preventDefault()
@@ -64,12 +68,6 @@ export const Cart = () => {
     )
   })
 
-  // const cartDefaultIds = cart.map((item) => {
-  //   return item.defaultPriceId
-  // })
-
-  // console.log(cartDefaultIds)
-
   return (
     <CartWrapper data-visible={isOpen ? true : false}>
       <CloseCartBtn onClick={(e: any) => closeHandler(e)}>
@@ -91,8 +89,7 @@ export const Cart = () => {
         <li>
           Quantidade:{' '}
           <strong>
-            {cartLength}{' '}
-            {cartLength !== 0 && cartLength !== 1 ? 'itens' : 'item'}
+            {cartLength} {quantityText}
           </strong>
         </li>
 
@@ -109,8 +106,7 @@ export const Cart = () => {
 
       <CheckoutBtn
         label="Finalizar compra"
-        onClick={() => handleCheckoutSession(cart[0].defaultPriceId)}
-        // onClick={() => handleCheckoutSession(cartDefaultIds)}
+        onClick={() => handleCheckoutSession(cartDefaultIds)}
       />
     </CartWrapper>
   )
