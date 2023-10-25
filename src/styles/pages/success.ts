@@ -1,11 +1,13 @@
 import { styled } from '@/styles'
 
 export const SuccessContainer = styled('main', {
+  height: 656,
+  width: '100%',
+  maxWidth: 590,
+  margin: '4rem auto 0',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  margin: '0 auto',
-  height: 656,
 
   h1: {
     fontSize: '$2xl',
@@ -43,9 +45,8 @@ export const ImageContainer = styled('div', {
   height: '8.75rem',
   border: 'solid 1px $green500',
   borderRadius: '50%',
-  marginTop: '4rem',
 
-  padding: '0.25rem',
+  padding: '4.04rem 4.91rem',
 
   display: 'flex',
   alignItems: 'center',
@@ -53,5 +54,15 @@ export const ImageContainer = styled('div', {
 
   img: {
     objectFit: 'cover',
+  },
+})
+
+export const ImageHolder = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  div: {
+    marginLeft: '-2.94594rem',
   },
 })

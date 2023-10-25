@@ -56,3 +56,11 @@ export interface CheckoutBtnProps {
   onClick?: (props: any) => void
   label: string
 }
+
+export interface SuccessProps {
+  customerName: string
+  products: {
+    name: string
+    images: string[]
+  }[]
+}

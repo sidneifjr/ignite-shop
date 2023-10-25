@@ -8,7 +8,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { priceId } = req.body
-  console.log('priceId:', priceId)
 
   // Nossos dados formatados para o exigido pelo Stripe.
   const lineItems: { price: any; quantity: number }[] = []
@@ -19,8 +18,6 @@ export default async function handler(
       quantity: 1,
     })
   })
-
-  console.log(lineItems)
 
   if (req.method !== 'POST') {
     return res.status(405).json({

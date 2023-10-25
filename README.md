@@ -6,7 +6,7 @@ Nesse desafio, você vai aproveitar a aplicação que já desenvolvemos na trilh
 
 - [x] Você utilizará a listagem já criada pela aplicação, mas adicionará a possibilidade de adicionar aquele item ao carrinho na página do produto.
 - [x] Salvar todos os itens selecionados em sua aplicação, e exibir o número de itens no carrinho
-- [ ] Enviar o carrinho que você armazenou na aplicação para a rota de checkout, onde irá gerar a sessão de checkout com os `line_items` necessários.
+- [x] Enviar o carrinho que você armazenou na aplicação para a rota de checkout, onde irá gerar a sessão de checkout com os `line_items` necessários.
 
 Para completar esse desafio você vai precisar de realizar algumas pesquisas para entender sobre a API do Stripe.
 
@@ -16,8 +16,7 @@ Layout: https://www.figma.com/file/qmsUES7HA9SN7If869pmUb/Ignite-Shop-2.0-%E2%80
 
 - [x] Animação ao navegar entre as páginas internas do projeto.
 - [x] Progressive Wep App (PWA).
-- [ ] Adição do item ao carrinho, na página específica do produto.
-- [ ] Mover o checkout para o submit do cart.
+- [x] Inclui checkout no submit do cart.
 - [ ] Filtro de produto (formato de select ou botões horizontais).
 - [ ] Geração de imagens do produto com um modelo, via IA generativa.
 - [ ] Context Selector.
@@ -60,3 +59,5 @@ Tal implementação exige a migração do Stitches para o PandaCSS, pois o prime
 13. PWA: https://github.com/shadowwalker/next-pwa e Manifest Generator: https://www.simicart.com/manifest-generator.html/
 
 14. Erros ao buildar (com PWA): https://github.com/vercel/next.js/issues/40155#issuecomment-1235164653
+
+15. https://www.youtube.com/watch?v=_8M-YVY76O8
